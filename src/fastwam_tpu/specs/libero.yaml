@@ -1,0 +1,47 @@
+# Official FastWAM LIBERO geometry; HDF5 loader supplies native OSC actions.
+train: &train
+  dataset_dirs: ["./data/libero"]
+  shape_meta:
+    images:
+      - {key: image, raw_shape: [3, 128, 128], shape: [3, 224, 224]}
+      - {key: wrist_image, raw_shape: [3, 128, 128], shape: [3, 224, 224]}
+    action: [{key: default, raw_shape: 7, shape: 7}]
+    state: [{key: default, raw_shape: 8, shape: 8}]
+  num_frames: 33
+  global_sample_stride: 1
+  action_video_freq_ratio: 4
+  video_size: [224, 448]
+  camera_key: null
+  val_set_proportion: 0.0
+  is_training_set: true
+  pretrained_norm_stats: null
+  skip_padding_as_possible: false
+  concat_multi_camera: horizontal
+  processor:
+    num_obs_steps: 33
+    num_output_cameras: 2
+    action_output_dim: 7
+    proprio_output_dim: 8
+    action_state_transforms: null
+    use_stepwise_action_norm: false
+    norm_default_mode: min/max
+    norm_exception_mode: null
+    action_state_merger: ConcatLeftAlign
+    train_transforms: {to_tensor: true, resize: [224, 224]}
+    val_transforms: {to_tensor: true, resize: [224, 224]}
+  text_embedding_cache_dir: ./data/text_embeds_cache/libero
+  context_len: 128
+val:
+  <<: *train
+  is_training_set: false
+l3:
+  index_fingerprint: null
+  stats_sha256: null
+  source_color_order: rgb
+  action_shift: 0
+  text_mode: sidetable
+  episode_weighting: transitions
+  pool_size: 64
+  pool_rate: 1.0
+  pool_prefetch_threads: 8
+  decode_threads: 8

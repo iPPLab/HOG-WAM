@@ -1,0 +1,249 @@
+[train p14] step 27450/29365  loss 0.0770  v 0.0758  a 0.0012  |g| 0.029  lr 2.148e-06  1.38s/step  744.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27460/29365  loss 0.0819  v 0.0806  a 0.0014  |g| 0.032  lr 2.136e-06  1.38s/step  742.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27470/29365  loss 0.0820  v 0.0806  a 0.0014  |g| 0.032  lr 2.124e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27480/29365  loss 0.0766  v 0.0753  a 0.0013  |g| 0.035  lr 2.112e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27490/29365  loss 0.0738  v 0.0722  a 0.0016  |g| 0.034  lr 2.101e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27500/29365  loss 0.0750  v 0.0737  a 0.0013  |g| 0.030  lr 2.089e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] bf16 snapshot step 27500 -> gs://example-bucket/runs/example-training/params_bf16_step0027500
+[train p14] step 27510/29365  loss 0.0760  v 0.0748  a 0.0012  |g| 0.039  lr 2.077e-06  2.16s/step  473.3smp/s  MFU 8.8%  HBM 5.1G
+[train p14] step 27520/29365  loss 0.0770  v 0.0758  a 0.0012  |g| 0.036  lr 2.066e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27530/29365  loss 0.0777  v 0.0765  a 0.0013  |g| 0.034  lr 2.054e-06  1.38s/step  744.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27540/29365  loss 0.0832  v 0.0820  a 0.0012  |g| 0.032  lr 2.043e-06  1.39s/step  735.2smp/s  MFU 13.7%  HBM 5.1G
+[train p14] step 27550/29365  loss 0.0795  v 0.0780  a 0.0014  |g| 0.035  lr 2.032e-06  1.38s/step  742.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27560/29365  loss 0.0775  v 0.0762  a 0.0012  |g| 0.034  lr 2.020e-06  1.38s/step  744.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27570/29365  loss 0.0832  v 0.0820  a 0.0012  |g| 0.031  lr 2.009e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27580/29365  loss 0.0759  v 0.0745  a 0.0014  |g| 0.033  lr 1.998e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27590/29365  loss 0.0706  v 0.0691  a 0.0016  |g| 0.034  lr 1.987e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27600/29365  loss 0.0785  v 0.0771  a 0.0014  |g| 0.035  lr 1.976e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 27600 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000027600
+[train p14] step 27610/29365  loss 0.0806  v 0.0794  a 0.0013  |g| 0.031  lr 1.965e-06  2.80s/step  366.0smp/s  MFU 6.8%  HBM 5.1G
+[train p14] step 27620/29365  loss 0.0774  v 0.0758  a 0.0016  |g| 0.036  lr 1.954e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27630/29365  loss 0.0770  v 0.0758  a 0.0012  |g| 0.034  lr 1.943e-06  1.38s/step  742.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27640/29365  loss 0.0803  v 0.0791  a 0.0012  |g| 0.036  lr 1.932e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27650/29365  loss 0.0783  v 0.0770  a 0.0013  |g| 0.032  lr 1.921e-06  1.38s/step  742.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27660/29365  loss 0.0770  v 0.0755  a 0.0015  |g| 0.033  lr 1.911e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27670/29365  loss 0.0738  v 0.0725  a 0.0013  |g| 0.032  lr 1.900e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27680/29365  loss 0.0769  v 0.0758  a 0.0011  |g| 0.031  lr 1.890e-06  1.38s/step  744.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27690/29365  loss 0.0825  v 0.0810  a 0.0015  |g| 0.035  lr 1.879e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27700/29365  loss 0.0775  v 0.0761  a 0.0014  |g| 0.032  lr 1.869e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27710/29365  loss 0.0829  v 0.0817  a 0.0012  |g| 0.032  lr 1.858e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27720/29365  loss 0.0767  v 0.0756  a 0.0011  |g| 0.031  lr 1.848e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27730/29365  loss 0.0788  v 0.0774  a 0.0014  |g| 0.028  lr 1.838e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27740/29365  loss 0.0808  v 0.0797  a 0.0012  |g| 0.031  lr 1.828e-06  1.38s/step  742.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27750/29365  loss 0.0770  v 0.0757  a 0.0013  |g| 0.034  lr 1.817e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27760/29365  loss 0.0779  v 0.0767  a 0.0012  |g| 0.033  lr 1.807e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27770/29365  loss 0.0775  v 0.0760  a 0.0015  |g| 0.034  lr 1.797e-06  1.38s/step  742.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27780/29365  loss 0.0792  v 0.0779  a 0.0013  |g| 0.038  lr 1.787e-06  1.38s/step  742.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27790/29365  loss 0.0723  v 0.0709  a 0.0013  |g| 0.035  lr 1.778e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27800/29365  loss 0.0780  v 0.0767  a 0.0013  |g| 0.030  lr 1.768e-06  1.38s/step  742.5smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 27800 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000027800
+[train p14] step 27810/29365  loss 0.0817  v 0.0804  a 0.0014  |g| 0.029  lr 1.758e-06  2.83s/step  362.0smp/s  MFU 6.7%  HBM 5.1G
+[train p14] step 27820/29365  loss 0.0804  v 0.0792  a 0.0012  |g| 0.032  lr 1.748e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27830/29365  loss 0.0760  v 0.0746  a 0.0014  |g| 0.033  lr 1.739e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27840/29365  loss 0.0770  v 0.0756  a 0.0014  |g| 0.033  lr 1.729e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27850/29365  loss 0.0793  v 0.0781  a 0.0012  |g| 0.032  lr 1.720e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27860/29365  loss 0.0786  v 0.0773  a 0.0013  |g| 0.031  lr 1.710e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27870/29365  loss 0.0793  v 0.0778  a 0.0014  |g| 0.033  lr 1.701e-06  1.38s/step  742.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27880/29365  loss 0.0819  v 0.0806  a 0.0013  |g| 0.034  lr 1.691e-06  1.38s/step  743.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27890/29365  loss 0.0808  v 0.0794  a 0.0014  |g| 0.029  lr 1.682e-06  1.38s/step  742.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27900/29365  loss 0.0772  v 0.0761  a 0.0011  |g| 0.034  lr 1.673e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27910/29365  loss 0.0801  v 0.0786  a 0.0015  |g| 0.035  lr 1.664e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27920/29365  loss 0.0752  v 0.0739  a 0.0013  |g| 0.034  lr 1.655e-06  1.38s/step  744.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27930/29365  loss 0.0803  v 0.0788  a 0.0015  |g| 0.036  lr 1.646e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27940/29365  loss 0.0801  v 0.0788  a 0.0013  |g| 0.036  lr 1.637e-06  1.38s/step  744.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27950/29365  loss 0.0789  v 0.0772  a 0.0017  |g| 0.036  lr 1.628e-06  1.40s/step  732.9smp/s  MFU 13.6%  HBM 5.1G
+[train p14] step 27960/29365  loss 0.0829  v 0.0816  a 0.0013  |g| 0.033  lr 1.619e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27970/29365  loss 0.0781  v 0.0770  a 0.0011  |g| 0.029  lr 1.610e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27980/29365  loss 0.0776  v 0.0764  a 0.0012  |g| 0.030  lr 1.602e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 27990/29365  loss 0.0768  v 0.0755  a 0.0013  |g| 0.030  lr 1.593e-06  1.38s/step  741.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28000/29365  loss 0.0749  v 0.0735  a 0.0014  |g| 0.034  lr 1.585e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 28000 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000028000
+[train p14] step 28010/29365  loss 0.0779  v 0.0766  a 0.0013  |g| 0.036  lr 1.576e-06  2.64s/step  388.3smp/s  MFU 7.2%  HBM 5.1G
+[train p14] step 28020/29365  loss 0.0726  v 0.0711  a 0.0015  |g| 0.030  lr 1.568e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28030/29365  loss 0.0746  v 0.0730  a 0.0016  |g| 0.032  lr 1.559e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28040/29365  loss 0.0760  v 0.0747  a 0.0013  |g| 0.034  lr 1.551e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28050/29365  loss 0.0823  v 0.0809  a 0.0014  |g| 0.034  lr 1.543e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28060/29365  loss 0.0766  v 0.0754  a 0.0012  |g| 0.033  lr 1.534e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28070/29365  loss 0.0757  v 0.0743  a 0.0014  |g| 0.046  lr 1.526e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28080/29365  loss 0.0765  v 0.0752  a 0.0012  |g| 0.031  lr 1.518e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28090/29365  loss 0.0745  v 0.0733  a 0.0012  |g| 0.031  lr 1.510e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28100/29365  loss 0.0754  v 0.0742  a 0.0012  |g| 0.035  lr 1.502e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28110/29365  loss 0.0766  v 0.0756  a 0.0011  |g| 0.029  lr 1.494e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28120/29365  loss 0.0752  v 0.0739  a 0.0013  |g| 0.028  lr 1.486e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28130/29365  loss 0.0758  v 0.0743  a 0.0015  |g| 0.036  lr 1.479e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28140/29365  loss 0.0750  v 0.0737  a 0.0013  |g| 0.031  lr 1.471e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28150/29365  loss 0.0749  v 0.0735  a 0.0015  |g| 0.034  lr 1.463e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28160/29365  loss 0.0749  v 0.0733  a 0.0016  |g| 0.038  lr 1.456e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28170/29365  loss 0.0830  v 0.0815  a 0.0015  |g| 0.033  lr 1.448e-06  1.38s/step  742.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28180/29365  loss 0.0775  v 0.0761  a 0.0014  |g| 0.037  lr 1.441e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28190/29365  loss 0.0794  v 0.0779  a 0.0015  |g| 0.037  lr 1.433e-06  1.38s/step  742.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28200/29365  loss 0.0781  v 0.0767  a 0.0015  |g| 0.031  lr 1.426e-06  1.38s/step  741.6smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 28200 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000028200
+[train p14] step 28210/29365  loss 0.0771  v 0.0758  a 0.0013  |g| 0.035  lr 1.419e-06  2.78s/step  368.3smp/s  MFU 6.9%  HBM 5.1G
+[train p14] step 28220/29365  loss 0.0824  v 0.0809  a 0.0015  |g| 0.033  lr 1.412e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28230/29365  loss 0.0788  v 0.0775  a 0.0014  |g| 0.034  lr 1.405e-06  1.38s/step  744.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28240/29365  loss 0.0735  v 0.0723  a 0.0012  |g| 0.033  lr 1.397e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28250/29365  loss 0.0819  v 0.0807  a 0.0012  |g| 0.030  lr 1.390e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28260/29365  loss 0.0770  v 0.0758  a 0.0012  |g| 0.038  lr 1.383e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28270/29365  loss 0.0805  v 0.0794  a 0.0011  |g| 0.029  lr 1.377e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28280/29365  loss 0.0751  v 0.0736  a 0.0015  |g| 0.032  lr 1.370e-06  1.38s/step  743.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28290/29365  loss 0.0838  v 0.0824  a 0.0014  |g| 0.031  lr 1.363e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28300/29365  loss 0.0734  v 0.0721  a 0.0013  |g| 0.031  lr 1.356e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28310/29365  loss 0.0782  v 0.0769  a 0.0014  |g| 0.033  lr 1.350e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28320/29365  loss 0.0806  v 0.0795  a 0.0011  |g| 0.028  lr 1.343e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28330/29365  loss 0.0767  v 0.0755  a 0.0013  |g| 0.033  lr 1.336e-06  1.38s/step  744.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28340/29365  loss 0.0762  v 0.0749  a 0.0013  |g| 0.034  lr 1.330e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28350/29365  loss 0.0775  v 0.0760  a 0.0015  |g| 0.035  lr 1.324e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28360/29365  loss 0.0792  v 0.0778  a 0.0014  |g| 0.030  lr 1.317e-06  1.38s/step  742.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28370/29365  loss 0.0778  v 0.0765  a 0.0013  |g| 0.030  lr 1.311e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28380/29365  loss 0.0787  v 0.0773  a 0.0014  |g| 0.036  lr 1.305e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28390/29365  loss 0.0767  v 0.0753  a 0.0014  |g| 0.040  lr 1.299e-06  1.38s/step  744.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28400/29365  loss 0.0751  v 0.0739  a 0.0012  |g| 0.032  lr 1.293e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 28400 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000028400
+[train p14] step 28410/29365  loss 0.0775  v 0.0763  a 0.0013  |g| 0.033  lr 1.287e-06  2.70s/step  379.4smp/s  MFU 7.1%  HBM 5.1G
+[train p14] step 28420/29365  loss 0.0827  v 0.0813  a 0.0014  |g| 0.032  lr 1.281e-06  1.38s/step  742.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28430/29365  loss 0.0754  v 0.0742  a 0.0012  |g| 0.029  lr 1.275e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28440/29365  loss 0.0795  v 0.0779  a 0.0016  |g| 0.035  lr 1.269e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28450/29365  loss 0.0806  v 0.0789  a 0.0017  |g| 0.035  lr 1.263e-06  1.38s/step  744.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28460/29365  loss 0.0762  v 0.0749  a 0.0014  |g| 0.032  lr 1.257e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28470/29365  loss 0.0748  v 0.0732  a 0.0016  |g| 0.039  lr 1.252e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28480/29365  loss 0.0765  v 0.0751  a 0.0014  |g| 0.030  lr 1.246e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28490/29365  loss 0.0812  v 0.0800  a 0.0011  |g| 0.030  lr 1.241e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28500/29365  loss 0.0769  v 0.0757  a 0.0011  |g| 0.030  lr 1.235e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28510/29365  loss 0.0711  v 0.0700  a 0.0011  |g| 0.025  lr 1.230e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28520/29365  loss 0.0822  v 0.0807  a 0.0015  |g| 0.030  lr 1.224e-06  1.38s/step  742.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28530/29365  loss 0.0758  v 0.0749  a 0.0010  |g| 0.034  lr 1.219e-06  1.38s/step  742.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28540/29365  loss 0.0830  v 0.0814  a 0.0016  |g| 0.035  lr 1.214e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28550/29365  loss 0.0746  v 0.0729  a 0.0017  |g| 0.033  lr 1.209e-06  1.38s/step  744.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28560/29365  loss 0.0810  v 0.0796  a 0.0014  |g| 0.030  lr 1.204e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28570/29365  loss 0.0782  v 0.0769  a 0.0013  |g| 0.033  lr 1.199e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28580/29365  loss 0.0763  v 0.0751  a 0.0012  |g| 0.027  lr 1.194e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28590/29365  loss 0.0737  v 0.0725  a 0.0012  |g| 0.032  lr 1.189e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28600/29365  loss 0.0773  v 0.0761  a 0.0012  |g| 0.035  lr 1.184e-06  1.38s/step  742.9smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 28600 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000028600
+[train p14] step 28610/29365  loss 0.0756  v 0.0741  a 0.0015  |g| 0.033  lr 1.179e-06  2.92s/step  350.3smp/s  MFU 6.5%  HBM 5.1G
+[train p14] step 28620/29365  loss 0.0746  v 0.0731  a 0.0015  |g| 0.034  lr 1.175e-06  1.38s/step  741.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28630/29365  loss 0.0791  v 0.0777  a 0.0014  |g| 0.034  lr 1.170e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28640/29365  loss 0.0754  v 0.0742  a 0.0012  |g| 0.029  lr 1.165e-06  1.38s/step  744.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28650/29365  loss 0.0785  v 0.0773  a 0.0012  |g| 0.031  lr 1.161e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28660/29365  loss 0.0804  v 0.0792  a 0.0013  |g| 0.034  lr 1.156e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28670/29365  loss 0.0740  v 0.0727  a 0.0013  |g| 0.028  lr 1.152e-06  1.38s/step  744.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28680/29365  loss 0.0760  v 0.0748  a 0.0012  |g| 0.032  lr 1.148e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28690/29365  loss 0.0753  v 0.0741  a 0.0012  |g| 0.038  lr 1.143e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28700/29365  loss 0.0812  v 0.0797  a 0.0015  |g| 0.035  lr 1.139e-06  1.38s/step  744.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28710/29365  loss 0.0736  v 0.0723  a 0.0013  |g| 0.032  lr 1.135e-06  1.38s/step  742.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28720/29365  loss 0.0804  v 0.0791  a 0.0014  |g| 0.033  lr 1.131e-06  1.38s/step  742.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28730/29365  loss 0.0776  v 0.0760  a 0.0016  |g| 0.041  lr 1.127e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28740/29365  loss 0.0801  v 0.0788  a 0.0013  |g| 0.035  lr 1.123e-06  1.38s/step  744.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28750/29365  loss 0.0794  v 0.0781  a 0.0013  |g| 0.032  lr 1.119e-06  1.38s/step  743.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28760/29365  loss 0.0803  v 0.0789  a 0.0014  |g| 0.034  lr 1.115e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28770/29365  loss 0.0796  v 0.0783  a 0.0014  |g| 0.031  lr 1.111e-06  1.38s/step  742.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28780/29365  loss 0.0812  v 0.0798  a 0.0014  |g| 0.036  lr 1.108e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28790/29365  loss 0.0746  v 0.0734  a 0.0012  |g| 0.027  lr 1.104e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28800/29365  loss 0.0778  v 0.0764  a 0.0014  |g| 0.031  lr 1.101e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 28800 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000028800
+[train p14] step 28810/29365  loss 0.0857  v 0.0844  a 0.0013  |g| 0.035  lr 1.097e-06  3.19s/step  320.9smp/s  MFU 6.0%  HBM 5.1G
+[train p14] step 28820/29365  loss 0.0772  v 0.0759  a 0.0013  |g| 0.034  lr 1.094e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28830/29365  loss 0.0758  v 0.0746  a 0.0012  |g| 0.029  lr 1.090e-06  1.38s/step  742.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28840/29365  loss 0.0782  v 0.0772  a 0.0010  |g| 0.028  lr 1.087e-06  1.38s/step  743.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28850/29365  loss 0.0813  v 0.0801  a 0.0012  |g| 0.029  lr 1.084e-06  1.38s/step  742.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28860/29365  loss 0.0787  v 0.0773  a 0.0014  |g| 0.032  lr 1.080e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28870/29365  loss 0.0842  v 0.0831  a 0.0012  |g| 0.032  lr 1.077e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28880/29365  loss 0.0798  v 0.0787  a 0.0012  |g| 0.029  lr 1.074e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28890/29365  loss 0.0783  v 0.0771  a 0.0012  |g| 0.030  lr 1.071e-06  1.38s/step  742.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28900/29365  loss 0.0780  v 0.0764  a 0.0016  |g| 0.032  lr 1.068e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28910/29365  loss 0.0821  v 0.0808  a 0.0013  |g| 0.031  lr 1.065e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28920/29365  loss 0.0729  v 0.0716  a 0.0013  |g| 0.031  lr 1.062e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28930/29365  loss 0.0811  v 0.0799  a 0.0012  |g| 0.032  lr 1.060e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28940/29365  loss 0.0790  v 0.0777  a 0.0013  |g| 0.031  lr 1.057e-06  1.38s/step  742.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28950/29365  loss 0.0782  v 0.0767  a 0.0015  |g| 0.028  lr 1.054e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28960/29365  loss 0.0786  v 0.0772  a 0.0013  |g| 0.029  lr 1.052e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28970/29365  loss 0.0795  v 0.0785  a 0.0011  |g| 0.032  lr 1.049e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28980/29365  loss 0.0807  v 0.0794  a 0.0013  |g| 0.033  lr 1.047e-06  1.38s/step  742.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 28990/29365  loss 0.0752  v 0.0741  a 0.0012  |g| 0.032  lr 1.044e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29000/29365  loss 0.0813  v 0.0801  a 0.0012  |g| 0.032  lr 1.042e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 29000 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000029000
+[train p14] step 29010/29365  loss 0.0731  v 0.0721  a 0.0010  |g| 0.027  lr 1.040e-06  2.74s/step  374.1smp/s  MFU 7.0%  HBM 5.1G
+[train p14] step 29020/29365  loss 0.0774  v 0.0758  a 0.0016  |g| 0.030  lr 1.038e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29030/29365  loss 0.0787  v 0.0774  a 0.0014  |g| 0.033  lr 1.035e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29040/29365  loss 0.0783  v 0.0769  a 0.0014  |g| 0.031  lr 1.033e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29050/29365  loss 0.0783  v 0.0770  a 0.0013  |g| 0.032  lr 1.031e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29060/29365  loss 0.0773  v 0.0761  a 0.0013  |g| 0.031  lr 1.029e-06  1.38s/step  744.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29070/29365  loss 0.0807  v 0.0793  a 0.0014  |g| 0.030  lr 1.027e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29080/29365  loss 0.0724  v 0.0710  a 0.0014  |g| 0.030  lr 1.026e-06  1.38s/step  744.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29090/29365  loss 0.0848  v 0.0834  a 0.0014  |g| 0.035  lr 1.024e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29100/29365  loss 0.0715  v 0.0702  a 0.0013  |g| 0.037  lr 1.022e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29110/29365  loss 0.0811  v 0.0798  a 0.0012  |g| 0.030  lr 1.021e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29120/29365  loss 0.0781  v 0.0770  a 0.0012  |g| 0.029  lr 1.019e-06  1.38s/step  744.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29130/29365  loss 0.0713  v 0.0703  a 0.0010  |g| 0.031  lr 1.017e-06  1.38s/step  744.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29140/29365  loss 0.0770  v 0.0758  a 0.0012  |g| 0.037  lr 1.016e-06  1.38s/step  743.8smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29150/29365  loss 0.0780  v 0.0769  a 0.0011  |g| 0.034  lr 1.015e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29160/29365  loss 0.0765  v 0.0750  a 0.0015  |g| 0.036  lr 1.013e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29170/29365  loss 0.0790  v 0.0774  a 0.0016  |g| 0.030  lr 1.012e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29180/29365  loss 0.0836  v 0.0822  a 0.0013  |g| 0.031  lr 1.011e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29190/29365  loss 0.0718  v 0.0705  a 0.0014  |g| 0.030  lr 1.010e-06  1.38s/step  743.2smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29200/29365  loss 0.0752  v 0.0739  a 0.0013  |g| 0.037  lr 1.009e-06  1.38s/step  744.5smp/s  MFU 13.8%  HBM 5.1G
+[ckpt] full step 29200 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000029200
+[train p14] step 29210/29365  loss 0.0762  v 0.0747  a 0.0015  |g| 0.037  lr 1.008e-06  2.88s/step  355.7smp/s  MFU 6.6%  HBM 5.1G
+[train p14] step 29220/29365  loss 0.0809  v 0.0795  a 0.0014  |g| 0.037  lr 1.007e-06  1.38s/step  743.1smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29230/29365  loss 0.0776  v 0.0763  a 0.0013  |g| 0.030  lr 1.006e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29240/29365  loss 0.0818  v 0.0805  a 0.0013  |g| 0.036  lr 1.005e-06  1.38s/step  743.0smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29250/29365  loss 0.0752  v 0.0739  a 0.0013  |g| 0.030  lr 1.004e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29260/29365  loss 0.0829  v 0.0817  a 0.0012  |g| 0.030  lr 1.004e-06  1.38s/step  742.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29270/29365  loss 0.0756  v 0.0742  a 0.0014  |g| 0.034  lr 1.003e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29280/29365  loss 0.0777  v 0.0764  a 0.0014  |g| 0.034  lr 1.002e-06  1.38s/step  743.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29290/29365  loss 0.0754  v 0.0740  a 0.0013  |g| 0.033  lr 1.002e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29300/29365  loss 0.0762  v 0.0748  a 0.0014  |g| 0.037  lr 1.001e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29310/29365  loss 0.0762  v 0.0750  a 0.0012  |g| 0.031  lr 1.001e-06  1.38s/step  743.5smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29320/29365  loss 0.0766  v 0.0754  a 0.0012  |g| 0.033  lr 1.001e-06  1.38s/step  743.9smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29330/29365  loss 0.0812  v 0.0799  a 0.0013  |g| 0.034  lr 1.000e-06  1.38s/step  742.6smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29340/29365  loss 0.0779  v 0.0767  a 0.0012  |g| 0.031  lr 1.000e-06  1.38s/step  743.7smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29350/29365  loss 0.0793  v 0.0779  a 0.0014  |g| 0.032  lr 1.000e-06  1.38s/step  743.4smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29360/29365  loss 0.0771  v 0.0756  a 0.0015  |g| 0.035  lr 1.000e-06  1.38s/step  743.3smp/s  MFU 13.8%  HBM 5.1G
+[train p14] step 29365/29365  loss 0.0791  v 0.0779  a 0.0012  |g| 0.032  lr 1.000e-06  1.46s/step  703.2smp/s  MFU 13.1%  HBM 5.1G
+[ckpt] full step 29365 committed by all hosts -> gs://example-bucket/runs/example-training/full/step_000029365
+[ckpt] bf16 snapshot step 29365 -> gs://example-bucket/runs/example-training/params_bf16_step0029365
+[train p14] done: 26165 steps in 38041.1s
+
+===== launch 2026-08-06T12:46:15Z pkg=f8cdceb43be6 =====
+5c5fa2cbf38452984aca284450c3a382  src/fastwam_tpu/training/train.py
+80b35314661f0aaa82237573ecfd917a  src/fastwam_tpu/models/fastwam.py
+162a5902fa5fc01260926cf5bd7efe8e  src/fastwam_tpu/training/sharding.py
+c8f82741359c25e0a853db58e82c9a67  src/fastwam_tpu/models/mot.py
+d3f0342c2fdf7039b79157ab626d1272  src/fastwam_tpu/data/loader.py
+fc6d19d32276b6bb9a21a80cffcc1584  configs/train.yaml
+code package: f8cdceb43be6
+launch env: LIBTPU_INIT_ARGS=[<unset>] XLA_FLAGS=[<unset>]
+.venv-example/.venv/lib/python3.12/site-packages/jax/_src/cloud_tpu_init.py:88: UserWarning: Transparent hugepages are not enabled. TPU runtime startup and shutdown time should be significantly improved on TPU v5e and newer. If not already set, you may need to enable transparent hugepages in your VM image (sudo sh -c "echo always > /sys/kernel/mm/transparent_hugepage/enabled")
+  warnings.warn(
+[train] compilation cache: gs://example-bucket/inputs/jax_cache_v6e_fastwam
+[train p14] jax 0.11.0 process 14/16 devices=64 (TPU v6 lite)
+[train p14] mesh {'data': 1, 'fsdp': 64} over 64 chips on 16 host(s); batch axes ('data', 'fsdp'); ZeRO degree 64; axis_policy=largest; activation pins on
+[train p14] batch: global 1024 = 1024 micro x 1 accum (64/host, 16/chip)
+[data] L3 example-bucket/inputs/robotwin/twp split=train episodes=27,225 windows=6,013,555 fingerprint=9cdaa0b4416e740d
+[data] sum(T-1) over the full set = 6,075,103 == official num_transition (same episodes)
+[data] canvas 384x320 from head@(0, 0, 256, 320), left_wrist@(256, 0, 128, 160), right_wrist@(256, 160, 128, 160)
+[data] colour: decoded as BGR, flipped to RGB (the eval adapter must NOT flip again)
+[data] window: 9 frames stride 4, 32 actions; action[j] = qpos[min(start+j, T-2) + 1], proprio[j] = qpos[min(start+j, T-2)]  (D5, action_shift=1)
+[data] official dataset_stats: gs://example-bucket/inputs/official_ckpt/robotwin_uncond_3cam_384_dataset_stats.json sha256=7a02c46cfc8c5e74 episodes=27500 transitions=6,075,103 z-score(global) + clamp(+-5) forward only
+[data] text=sidetable  [128,4096] per_episode from example-bucket/inputs/robotwin/text (encoder=Wan-AI/Wan2.1-T2V-1.3B-Diffusers, rows=23552, official template applied, padded positions zeroed)
+[data] decoder=simplejpeg  weighting=transitions  pool=4096 episodes @ rate 1 (turnover 4,096 steps)
+[train p14] schedule: 6,013,555 train windows -> official total 29,365 steps (5 epochs at global batch 1024); running 29,365 of them; decay_steps=29,365 warmup=1,468; lr 0.0001 -> 1e-06
+[train p14] run_name=example-training -> gs://example-bucket/runs/example-training
+[train p14] loading the video expert from gs://example-bucket/inputs/ckpt/wan22_5b/transformer
+[train p14]   video expert loaded in 19.8s
+[train p14] loading the action expert from gs://example-bucket/inputs/ckpt/action_dit_init_1024
+[train p14]   action expert loaded in 7.6s
+[train p14] model: 6.0207 B params, built + loaded in 47.8s
+[train p14] params + optimizer state placed in 0.4s (~1.1 G/chip resident at ZeRO 64-way)
+[train p14] frozen VAE replicated (bfloat16) from gs://example-bucket/inputs/ckpt/wan22_5b/vae
+[train p14] accumulation: ONE fused jit over 1 microstep(s)
+[ckpt] RESUMED from gs://example-bucket/runs/example-training/full/step_000029365 (all hosts, lockstep): continuing at step 29366
+[train p14] resume: starting at step 29366
+[ckpt] patched epath gs:// mkdir (orbax needs the prefix to exist right after mkdir)
+[ckpt] root=gs://example-bucket/runs/example-training/full keep_last=2 (collective writes, every host)
+[train p14] ckpt: full every 200, bf16 every 2500
+[train p14] MFU model: 10.928 TFLOP/sample (fwd+bwd, remat recompute excluded), peak 918 TFLOP/s/chip, 392 joint tokens/sample
+[train p14] HBM before the loop: in use 2.5G / peak 2.5G
+[train p14] startup took 93.2s; the next gap is the cold compile
+[train p14] done: 0 steps in 0.0s

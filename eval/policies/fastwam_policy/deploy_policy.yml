@@ -1,0 +1,13 @@
+# RoboTwin simulator-side FastWAM policy settings.
+policy_name: fastwam_policy
+task_name: beat_block_hammer          # overridden per unit by the harness
+task_config: demo_clean
+ckpt_setting: official_uncond_3cam_384
+seed: 0
+
+# Use RoboTwin's held-out instructions.
+instruction_type: unseen
+
+policy_conda_env: null
+
+test_num: 25

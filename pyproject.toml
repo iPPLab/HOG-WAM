@@ -1,0 +1,64 @@
+[project]
+name = "fastwam-tpu"
+version = "0.0.0"
+description = "HOG-WAM training and simulation evaluation in JAX"
+requires-python = ">=3.12"
+
+# Version floor follows maxdiffusion's generated requirements (jax>=0.9, flax>=0.12.6,
+# orbax>=0.11.33) because the code we port from targets those nnx APIs. This is
+# deliberately NOT TinyWAM's pinned environment (jax 0.6.2 / flax 0.10.7): the nnx API
+# drifted, and adapting ported code once is cheaper than back-porting maxdiffusion.
+dependencies = [
+    "jax>=0.9.0",
+    "flax>=0.12.6",
+    "optax>=0.2.5",
+    "orbax-checkpoint>=0.11.33",
+    "numpy>=2.0",
+    "pyyaml>=6.0",
+    # Enables optional GCS access for Orbax checkpoints and TPU training data.
+    "gcsfs>=2024.6.0",
+    # .twp JPEG decode (M4). simplejpeg is ~2x PIL (0.27 vs 0.52 ms per 240x320 frame);
+    # the two disagree by <=2/255 per pixel (libjpeg IDCT rounding), so the active
+    # decoder is pinned in the data config and recorded in the run's spec — never mixed
+    # inside one experiment. Pillow is the fallback and the resize cross-check in tests.
+    "simplejpeg>=1.7",
+    "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+libero = ["h5py>=3.10"]
+dataset = ["av>=13", "pyarrow>=18"]
+# TPU runtime: uv sync --extra tpu   (pulls libtpu; must match the VM)
+tpu = ["jax[tpu]>=0.9.0"]
+# NVIDIA GPU training and inference: uv sync --extra cuda.
+cuda = ["jax[cuda12]>=0.11.0"]
+# PyTorch weight conversion, instruction encoding, and parity tests.
+convert = [
+    "torch>=2.4",
+    "safetensors>=0.4.5",
+    "huggingface-hub>=0.25.0",
+    "diffusers>=0.33.1",
+    "transformers>=4.49.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fastwam_tpu"]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.11"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+indent-width = 4          # project rule: 4 spaces. maxdiffusion is 2 — reindent on port.
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]

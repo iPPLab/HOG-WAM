@@ -1,0 +1,71 @@
+diff --git a/script/eval_policy_client.py b/script/eval_policy_client.py
+index 22e418a..65fa180 100644
+--- a/script/eval_policy_client.py
++++ b/script/eval_policy_client.py
+@@ -131,7 +131,7 @@ def get_embodiment_config(robot_file):
+     return embodiment_args
+ 
+ class ModelClient:
+-    def __init__(self, host='localhost', port=9999, timeout=30):
++    def __init__(self, host='localhost', port=9999, timeout=300):
+         self.host = host
+         self.port = port
+         self.timeout = timeout
+@@ -324,9 +324,28 @@ def main(usr_args):
+ 
+     seed = usr_args["seed"]
+ 
+-    st_seed = 100000 * (1 + seed)
++    # --- canonical seed mode (absolute seed controls) -------------------------
++    # 上游默认: st_seed = 100000*(1+seed) 只是个"起点", 之后 expert_check 会一直
++    # 往后滑到第一个专家能解出来的场景为止(:391-421 的 `now_seed += 1; continue`)。
++    # 但专家用的是 mplib/curobo 的随机采样规划器, 同一场景这次能解、下次可能解不了
++    # —— 实测 13 轮归档日志, 两轮之间 seed 列表平均只有 91.9% 重叠(25 集里 23 集相同,
++    # 最差 16 集)。也就是说"同一起始 seed = 同一批 episode"这个假设是错的,
++    # 光这一项就贡献 ±4pp、最差 ±16pp 的分数波动, 而它与模型无关。
++    #
++    # abs_seed: 直接指定要跑的那个场景, 绕开 100000*(1+seed) 这层映射。
++    # no_expert_check: 跳过专家预跑。配合一份"参考轮里被专家解出过"的 canonical
++    # 列表使用 —— 场景可解是已知事实, 这一次专家做不出来是规划器抽风而非场景变难,
++    # 用它把一道好题作废没有道理。副作用: 每集从跑两遍(专家+模型)变成一遍。
++    #
++    # 两个键都不给 = 上游原样行为。
++    abs_seed = usr_args.get("abs_seed", None)
++    st_seed = int(abs_seed) if abs_seed is not None else 100000 * (1 + seed)
++    expert_check = not bool(usr_args.get("no_expert_check", False))
++    if abs_seed is not None or not expert_check:
++        print(f"\033[36m[canonical] st_seed={st_seed} expert_check={expert_check}\033[0m", flush=True)
++    # -------------------------------------------------------------------------
+     suc_nums = []
+-    test_num = 100
++    test_num = int(usr_args.get("test_num", 100))
+     topk = 1
+ 
+     # model = get_model(usr_args)
+@@ -339,7 +358,8 @@ def main(usr_args):
+                                    test_num=test_num,
+                                    video_size=video_size,
+                                    instruction_type=instruction_type,
+-                                   policy_conda_env=policy_conda_env)
++                                   policy_conda_env=policy_conda_env,
++                                   expert_check=expert_check)
+     suc_nums.append(suc_num)
+ 
+     topk_success_rate = sorted(suc_nums, reverse=True)[:topk]
+@@ -363,11 +383,14 @@ def eval_policy(task_name,
+                 test_num=100,
+                 video_size=None,
+                 instruction_type=None,
+-                policy_conda_env=None):
++                policy_conda_env=None,
++                expert_check=True):
+     print(f"\033[34mTask Name: {args['task_name']}\033[0m")
+     print(f"\033[34mPolicy Name: {args['policy_name']}\033[0m")
+ 
+-    expert_check = True
++    # expert_check 上游是硬编码 True(:370)。改成参数, 默认仍是 True = 上游行为。
++    # False 时 :391 的预跑整段被跳过, :415 的条件短路为真 -> now_seed 不再滑动,
++    # 跑的就是传进来的那个 st_seed 本身。
+     TASK_ENV.suc = 0
+     TASK_ENV.test_num = 0
+ 

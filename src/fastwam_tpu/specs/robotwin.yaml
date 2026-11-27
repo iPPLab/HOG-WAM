@@ -1,0 +1,84 @@
+# Internal immutable RoboTwin tensor/data specification. Not a user training config.
+train:
+  dataset_dirs: ["./data/robotwin2.0/robotwin2.0"]
+  shape_meta:
+    images:
+      - {key: "cam_high", raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: "cam_left_wrist", raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: "cam_right_wrist", raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+    action:
+      - {key: "default", raw_shape: 14, shape: 14}
+    state:
+      - {key: "default", raw_shape: 14, shape: 14}
+  num_frames: 33
+  global_sample_stride: 1
+  action_video_freq_ratio: 4
+  video_size: [384, 320]
+  camera_key: null
+  val_set_proportion: 0.01
+  is_training_set: true
+  pretrained_norm_stats: "./data/robotwin2.0/dataset_stats.json"
+  skip_padding_as_possible: false
+  concat_multi_camera: "robotwin"
+  processor:
+    num_obs_steps: 33
+    num_output_cameras: 3
+    action_output_dim: 14
+    proprio_output_dim: 14
+    action_state_transforms: null
+    use_stepwise_action_norm: false
+    norm_default_mode: "z-score"
+    norm_exception_mode: null
+    action_state_merger: "ConcatLeftAlign"
+    train_transforms: {to_tensor: true, resize: [240, 320]}
+    val_transforms: {to_tensor: true, resize: [240, 320]}
+  text_embedding_cache_dir: "./data/text_embeds_cache/robotwin"
+  context_len: 128
+
+val:
+  dataset_dirs: ["./data/robotwin2.0/robotwin2.0"]
+  shape_meta:
+    images:
+      - {key: "cam_high", raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: "cam_left_wrist", raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+      - {key: "cam_right_wrist", raw_shape: [3, 480, 640], shape: [3, 240, 320]}
+    action:
+      - {key: "default", raw_shape: 14, shape: 14}
+    state:
+      - {key: "default", raw_shape: 14, shape: 14}
+  num_frames: 33
+  global_sample_stride: 1
+  action_video_freq_ratio: 4
+  video_size: [384, 320]
+  camera_key: null
+  val_set_proportion: 0.01
+  is_training_set: false
+  pretrained_norm_stats: "./data/robotwin2.0/dataset_stats.json"
+  skip_padding_as_possible: false
+  concat_multi_camera: "robotwin"
+  processor:
+    num_obs_steps: 33
+    num_output_cameras: 3
+    action_output_dim: 14
+    proprio_output_dim: 14
+    action_state_transforms: null
+    use_stepwise_action_norm: false
+    norm_default_mode: "z-score"
+    norm_exception_mode: null
+    action_state_merger: "ConcatLeftAlign"
+    train_transforms: {to_tensor: true, resize: [240, 320]}
+    val_transforms: {to_tensor: true, resize: [240, 320]}
+  text_embedding_cache_dir: "./data/text_embeds_cache/robotwin"
+  context_len: 128
+
+l3:
+  index_fingerprint: "cd818fceb45f7736"
+  stats_sha256: "7a02c46cfc8c5e746c0afbe41fca73f723eda34cbc083f8ca54f76d8f7468095"
+  source_color_order: "bgr"
+  action_shift: 1
+  text_mode: "sidetable"
+  episode_weighting: "transitions"
+  pool_size: 4096
+  pool_rate: 1.0
+  pool_prefetch_threads: 8
+  decode_threads: 16

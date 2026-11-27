@@ -1,0 +1,8190 @@
+{
+ "meta": {
+  "what": "official FastWAM .pt video tower -> wan22_5b Orbax tree (this repo's NNX names)",
+  "pt_source": "checkpoints/fastwam/robotwin_uncond_3cam_384.pt",
+  "pt_key_prefix": "mot.mixtures.video.",
+  "orbax_tree": "checkpoints/wan/video_dit",
+  "num_keys": 825,
+  "bijective": true,
+  "transform_counts": {
+   "transpose(2,3,4,1,0)": 1,
+   "identity": 760,
+   "transpose(1,0)": 64
+  },
+  "pt_dtype": "bfloat16",
+  "orbax_dtype": "float32",
+  "note": "torch Linear weight is (out,in) and flax kernel is (in,out), hence transpose(1,0) on every 2-D weight; patch_embedding is a Conv3d and takes maxdiffusion's (2,3,4,1,0). The action tower has the SAME per-block key template at width 1024 and is NOT in this table - it has no counterpart in the Wan2.2 base tree.",
+  "WARNING_transform_column_removed": "2026-08-04: transform column was shape-inferred and WRONG for all 242 square matrices (square transposes are shape-invisible; torch Linear stores (out,in), flax kernel stores (in,out) \u2014 squares must be transposed too). Removed to prevent misuse. Layout rule lives in tools/convert_weights.py::to_torch_layout (transpose by .kernel suffix, never by shape). See test_square_kernels_are_transposed_too."
+ },
+ "map": {
+  "mot.mixtures.video.patch_embedding.weight": {
+   "orbax": "patch_embedding.kernel",
+   "pt_shape": [
+    3072,
+    48,
+    1,
+    2,
+    2
+   ],
+   "orbax_shape": [
+    1,
+    2,
+    2,
+    48,
+    3072
+   ]
+  },
+  "mot.mixtures.video.patch_embedding.bias": {
+   "orbax": "patch_embedding.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.text_embedding.0.weight": {
+   "orbax": "condition_embedder.text_embedder.linear_1.kernel",
+   "pt_shape": [
+    3072,
+    4096
+   ],
+   "orbax_shape": [
+    4096,
+    3072
+   ]
+  },
+  "mot.mixtures.video.text_embedding.0.bias": {
+   "orbax": "condition_embedder.text_embedder.linear_1.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.text_embedding.2.weight": {
+   "orbax": "condition_embedder.text_embedder.linear_2.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.text_embedding.2.bias": {
+   "orbax": "condition_embedder.text_embedder.linear_2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.time_embedding.0.weight": {
+   "orbax": "condition_embedder.time_embedder.linear_1.kernel",
+   "pt_shape": [
+    3072,
+    256
+   ],
+   "orbax_shape": [
+    256,
+    3072
+   ]
+  },
+  "mot.mixtures.video.time_embedding.0.bias": {
+   "orbax": "condition_embedder.time_embedder.linear_1.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.time_embedding.2.weight": {
+   "orbax": "condition_embedder.time_embedder.linear_2.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.time_embedding.2.bias": {
+   "orbax": "condition_embedder.time_embedder.linear_2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.time_projection.1.weight": {
+   "orbax": "condition_embedder.time_proj.kernel",
+   "pt_shape": [
+    18432,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    18432
+   ]
+  },
+  "mot.mixtures.video.time_projection.1.bias": {
+   "orbax": "condition_embedder.time_proj.bias",
+   "pt_shape": [
+    18432
+   ],
+   "orbax_shape": [
+    18432
+   ]
+  },
+  "mot.mixtures.video.blocks.0.modulation": {
+   "orbax": "blocks.0.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.q.weight": {
+   "orbax": "blocks.0.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.q.bias": {
+   "orbax": "blocks.0.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.k.weight": {
+   "orbax": "blocks.0.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.k.bias": {
+   "orbax": "blocks.0.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.v.weight": {
+   "orbax": "blocks.0.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.v.bias": {
+   "orbax": "blocks.0.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.o.weight": {
+   "orbax": "blocks.0.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.o.bias": {
+   "orbax": "blocks.0.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.norm_q.weight": {
+   "orbax": "blocks.0.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.self_attn.norm_k.weight": {
+   "orbax": "blocks.0.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.q.weight": {
+   "orbax": "blocks.0.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.q.bias": {
+   "orbax": "blocks.0.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.k.weight": {
+   "orbax": "blocks.0.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.k.bias": {
+   "orbax": "blocks.0.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.v.weight": {
+   "orbax": "blocks.0.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.v.bias": {
+   "orbax": "blocks.0.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.o.weight": {
+   "orbax": "blocks.0.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.o.bias": {
+   "orbax": "blocks.0.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.norm_q.weight": {
+   "orbax": "blocks.0.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.cross_attn.norm_k.weight": {
+   "orbax": "blocks.0.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.norm3.weight": {
+   "orbax": "blocks.0.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.norm3.bias": {
+   "orbax": "blocks.0.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.ffn.0.weight": {
+   "orbax": "blocks.0.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.0.ffn.0.bias": {
+   "orbax": "blocks.0.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.0.ffn.2.weight": {
+   "orbax": "blocks.0.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.0.ffn.2.bias": {
+   "orbax": "blocks.0.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.modulation": {
+   "orbax": "blocks.1.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.q.weight": {
+   "orbax": "blocks.1.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.q.bias": {
+   "orbax": "blocks.1.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.k.weight": {
+   "orbax": "blocks.1.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.k.bias": {
+   "orbax": "blocks.1.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.v.weight": {
+   "orbax": "blocks.1.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.v.bias": {
+   "orbax": "blocks.1.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.o.weight": {
+   "orbax": "blocks.1.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.o.bias": {
+   "orbax": "blocks.1.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.norm_q.weight": {
+   "orbax": "blocks.1.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.self_attn.norm_k.weight": {
+   "orbax": "blocks.1.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.q.weight": {
+   "orbax": "blocks.1.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.q.bias": {
+   "orbax": "blocks.1.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.k.weight": {
+   "orbax": "blocks.1.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.k.bias": {
+   "orbax": "blocks.1.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.v.weight": {
+   "orbax": "blocks.1.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.v.bias": {
+   "orbax": "blocks.1.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.o.weight": {
+   "orbax": "blocks.1.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.o.bias": {
+   "orbax": "blocks.1.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.norm_q.weight": {
+   "orbax": "blocks.1.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.cross_attn.norm_k.weight": {
+   "orbax": "blocks.1.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.norm3.weight": {
+   "orbax": "blocks.1.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.norm3.bias": {
+   "orbax": "blocks.1.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.ffn.0.weight": {
+   "orbax": "blocks.1.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.1.ffn.0.bias": {
+   "orbax": "blocks.1.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.1.ffn.2.weight": {
+   "orbax": "blocks.1.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.1.ffn.2.bias": {
+   "orbax": "blocks.1.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.modulation": {
+   "orbax": "blocks.2.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.q.weight": {
+   "orbax": "blocks.2.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.q.bias": {
+   "orbax": "blocks.2.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.k.weight": {
+   "orbax": "blocks.2.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.k.bias": {
+   "orbax": "blocks.2.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.v.weight": {
+   "orbax": "blocks.2.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.v.bias": {
+   "orbax": "blocks.2.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.o.weight": {
+   "orbax": "blocks.2.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.o.bias": {
+   "orbax": "blocks.2.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.norm_q.weight": {
+   "orbax": "blocks.2.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.self_attn.norm_k.weight": {
+   "orbax": "blocks.2.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.q.weight": {
+   "orbax": "blocks.2.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.q.bias": {
+   "orbax": "blocks.2.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.k.weight": {
+   "orbax": "blocks.2.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.k.bias": {
+   "orbax": "blocks.2.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.v.weight": {
+   "orbax": "blocks.2.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.v.bias": {
+   "orbax": "blocks.2.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.o.weight": {
+   "orbax": "blocks.2.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.o.bias": {
+   "orbax": "blocks.2.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.norm_q.weight": {
+   "orbax": "blocks.2.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.cross_attn.norm_k.weight": {
+   "orbax": "blocks.2.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.norm3.weight": {
+   "orbax": "blocks.2.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.norm3.bias": {
+   "orbax": "blocks.2.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.ffn.0.weight": {
+   "orbax": "blocks.2.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.2.ffn.0.bias": {
+   "orbax": "blocks.2.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.2.ffn.2.weight": {
+   "orbax": "blocks.2.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.2.ffn.2.bias": {
+   "orbax": "blocks.2.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.modulation": {
+   "orbax": "blocks.3.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.q.weight": {
+   "orbax": "blocks.3.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.q.bias": {
+   "orbax": "blocks.3.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.k.weight": {
+   "orbax": "blocks.3.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.k.bias": {
+   "orbax": "blocks.3.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.v.weight": {
+   "orbax": "blocks.3.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.v.bias": {
+   "orbax": "blocks.3.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.o.weight": {
+   "orbax": "blocks.3.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.o.bias": {
+   "orbax": "blocks.3.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.norm_q.weight": {
+   "orbax": "blocks.3.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.self_attn.norm_k.weight": {
+   "orbax": "blocks.3.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.q.weight": {
+   "orbax": "blocks.3.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.q.bias": {
+   "orbax": "blocks.3.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.k.weight": {
+   "orbax": "blocks.3.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.k.bias": {
+   "orbax": "blocks.3.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.v.weight": {
+   "orbax": "blocks.3.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.v.bias": {
+   "orbax": "blocks.3.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.o.weight": {
+   "orbax": "blocks.3.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.o.bias": {
+   "orbax": "blocks.3.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.norm_q.weight": {
+   "orbax": "blocks.3.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.cross_attn.norm_k.weight": {
+   "orbax": "blocks.3.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.norm3.weight": {
+   "orbax": "blocks.3.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.norm3.bias": {
+   "orbax": "blocks.3.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.ffn.0.weight": {
+   "orbax": "blocks.3.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.3.ffn.0.bias": {
+   "orbax": "blocks.3.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.3.ffn.2.weight": {
+   "orbax": "blocks.3.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.3.ffn.2.bias": {
+   "orbax": "blocks.3.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.modulation": {
+   "orbax": "blocks.4.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.q.weight": {
+   "orbax": "blocks.4.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.q.bias": {
+   "orbax": "blocks.4.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.k.weight": {
+   "orbax": "blocks.4.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.k.bias": {
+   "orbax": "blocks.4.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.v.weight": {
+   "orbax": "blocks.4.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.v.bias": {
+   "orbax": "blocks.4.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.o.weight": {
+   "orbax": "blocks.4.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.o.bias": {
+   "orbax": "blocks.4.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.norm_q.weight": {
+   "orbax": "blocks.4.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.self_attn.norm_k.weight": {
+   "orbax": "blocks.4.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.q.weight": {
+   "orbax": "blocks.4.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.q.bias": {
+   "orbax": "blocks.4.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.k.weight": {
+   "orbax": "blocks.4.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.k.bias": {
+   "orbax": "blocks.4.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.v.weight": {
+   "orbax": "blocks.4.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.v.bias": {
+   "orbax": "blocks.4.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.o.weight": {
+   "orbax": "blocks.4.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.o.bias": {
+   "orbax": "blocks.4.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.norm_q.weight": {
+   "orbax": "blocks.4.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.cross_attn.norm_k.weight": {
+   "orbax": "blocks.4.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.norm3.weight": {
+   "orbax": "blocks.4.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.norm3.bias": {
+   "orbax": "blocks.4.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.ffn.0.weight": {
+   "orbax": "blocks.4.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.4.ffn.0.bias": {
+   "orbax": "blocks.4.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.4.ffn.2.weight": {
+   "orbax": "blocks.4.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.4.ffn.2.bias": {
+   "orbax": "blocks.4.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.modulation": {
+   "orbax": "blocks.5.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.q.weight": {
+   "orbax": "blocks.5.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.q.bias": {
+   "orbax": "blocks.5.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.k.weight": {
+   "orbax": "blocks.5.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.k.bias": {
+   "orbax": "blocks.5.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.v.weight": {
+   "orbax": "blocks.5.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.v.bias": {
+   "orbax": "blocks.5.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.o.weight": {
+   "orbax": "blocks.5.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.o.bias": {
+   "orbax": "blocks.5.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.norm_q.weight": {
+   "orbax": "blocks.5.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.self_attn.norm_k.weight": {
+   "orbax": "blocks.5.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.q.weight": {
+   "orbax": "blocks.5.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.q.bias": {
+   "orbax": "blocks.5.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.k.weight": {
+   "orbax": "blocks.5.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.k.bias": {
+   "orbax": "blocks.5.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.v.weight": {
+   "orbax": "blocks.5.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.v.bias": {
+   "orbax": "blocks.5.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.o.weight": {
+   "orbax": "blocks.5.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.o.bias": {
+   "orbax": "blocks.5.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.norm_q.weight": {
+   "orbax": "blocks.5.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.cross_attn.norm_k.weight": {
+   "orbax": "blocks.5.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.norm3.weight": {
+   "orbax": "blocks.5.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.norm3.bias": {
+   "orbax": "blocks.5.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.ffn.0.weight": {
+   "orbax": "blocks.5.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.5.ffn.0.bias": {
+   "orbax": "blocks.5.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.5.ffn.2.weight": {
+   "orbax": "blocks.5.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.5.ffn.2.bias": {
+   "orbax": "blocks.5.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.modulation": {
+   "orbax": "blocks.6.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.q.weight": {
+   "orbax": "blocks.6.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.q.bias": {
+   "orbax": "blocks.6.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.k.weight": {
+   "orbax": "blocks.6.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.k.bias": {
+   "orbax": "blocks.6.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.v.weight": {
+   "orbax": "blocks.6.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.v.bias": {
+   "orbax": "blocks.6.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.o.weight": {
+   "orbax": "blocks.6.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.o.bias": {
+   "orbax": "blocks.6.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.norm_q.weight": {
+   "orbax": "blocks.6.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.self_attn.norm_k.weight": {
+   "orbax": "blocks.6.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.q.weight": {
+   "orbax": "blocks.6.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.q.bias": {
+   "orbax": "blocks.6.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.k.weight": {
+   "orbax": "blocks.6.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.k.bias": {
+   "orbax": "blocks.6.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.v.weight": {
+   "orbax": "blocks.6.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.v.bias": {
+   "orbax": "blocks.6.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.o.weight": {
+   "orbax": "blocks.6.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.o.bias": {
+   "orbax": "blocks.6.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.norm_q.weight": {
+   "orbax": "blocks.6.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.cross_attn.norm_k.weight": {
+   "orbax": "blocks.6.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.norm3.weight": {
+   "orbax": "blocks.6.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.norm3.bias": {
+   "orbax": "blocks.6.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.ffn.0.weight": {
+   "orbax": "blocks.6.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.6.ffn.0.bias": {
+   "orbax": "blocks.6.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.6.ffn.2.weight": {
+   "orbax": "blocks.6.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.6.ffn.2.bias": {
+   "orbax": "blocks.6.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.modulation": {
+   "orbax": "blocks.7.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.q.weight": {
+   "orbax": "blocks.7.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.q.bias": {
+   "orbax": "blocks.7.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.k.weight": {
+   "orbax": "blocks.7.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.k.bias": {
+   "orbax": "blocks.7.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.v.weight": {
+   "orbax": "blocks.7.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.v.bias": {
+   "orbax": "blocks.7.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.o.weight": {
+   "orbax": "blocks.7.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.o.bias": {
+   "orbax": "blocks.7.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.norm_q.weight": {
+   "orbax": "blocks.7.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.self_attn.norm_k.weight": {
+   "orbax": "blocks.7.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.q.weight": {
+   "orbax": "blocks.7.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.q.bias": {
+   "orbax": "blocks.7.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.k.weight": {
+   "orbax": "blocks.7.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.k.bias": {
+   "orbax": "blocks.7.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.v.weight": {
+   "orbax": "blocks.7.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.v.bias": {
+   "orbax": "blocks.7.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.o.weight": {
+   "orbax": "blocks.7.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.o.bias": {
+   "orbax": "blocks.7.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.norm_q.weight": {
+   "orbax": "blocks.7.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.cross_attn.norm_k.weight": {
+   "orbax": "blocks.7.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.norm3.weight": {
+   "orbax": "blocks.7.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.norm3.bias": {
+   "orbax": "blocks.7.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.ffn.0.weight": {
+   "orbax": "blocks.7.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.7.ffn.0.bias": {
+   "orbax": "blocks.7.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.7.ffn.2.weight": {
+   "orbax": "blocks.7.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.7.ffn.2.bias": {
+   "orbax": "blocks.7.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.modulation": {
+   "orbax": "blocks.8.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.q.weight": {
+   "orbax": "blocks.8.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.q.bias": {
+   "orbax": "blocks.8.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.k.weight": {
+   "orbax": "blocks.8.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.k.bias": {
+   "orbax": "blocks.8.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.v.weight": {
+   "orbax": "blocks.8.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.v.bias": {
+   "orbax": "blocks.8.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.o.weight": {
+   "orbax": "blocks.8.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.o.bias": {
+   "orbax": "blocks.8.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.norm_q.weight": {
+   "orbax": "blocks.8.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.self_attn.norm_k.weight": {
+   "orbax": "blocks.8.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.q.weight": {
+   "orbax": "blocks.8.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.q.bias": {
+   "orbax": "blocks.8.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.k.weight": {
+   "orbax": "blocks.8.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.k.bias": {
+   "orbax": "blocks.8.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.v.weight": {
+   "orbax": "blocks.8.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.v.bias": {
+   "orbax": "blocks.8.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.o.weight": {
+   "orbax": "blocks.8.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.o.bias": {
+   "orbax": "blocks.8.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.norm_q.weight": {
+   "orbax": "blocks.8.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.cross_attn.norm_k.weight": {
+   "orbax": "blocks.8.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.norm3.weight": {
+   "orbax": "blocks.8.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.norm3.bias": {
+   "orbax": "blocks.8.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.ffn.0.weight": {
+   "orbax": "blocks.8.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.8.ffn.0.bias": {
+   "orbax": "blocks.8.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.8.ffn.2.weight": {
+   "orbax": "blocks.8.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.8.ffn.2.bias": {
+   "orbax": "blocks.8.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.modulation": {
+   "orbax": "blocks.9.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.q.weight": {
+   "orbax": "blocks.9.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.q.bias": {
+   "orbax": "blocks.9.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.k.weight": {
+   "orbax": "blocks.9.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.k.bias": {
+   "orbax": "blocks.9.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.v.weight": {
+   "orbax": "blocks.9.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.v.bias": {
+   "orbax": "blocks.9.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.o.weight": {
+   "orbax": "blocks.9.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.o.bias": {
+   "orbax": "blocks.9.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.norm_q.weight": {
+   "orbax": "blocks.9.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.self_attn.norm_k.weight": {
+   "orbax": "blocks.9.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.q.weight": {
+   "orbax": "blocks.9.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.q.bias": {
+   "orbax": "blocks.9.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.k.weight": {
+   "orbax": "blocks.9.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.k.bias": {
+   "orbax": "blocks.9.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.v.weight": {
+   "orbax": "blocks.9.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.v.bias": {
+   "orbax": "blocks.9.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.o.weight": {
+   "orbax": "blocks.9.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.o.bias": {
+   "orbax": "blocks.9.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.norm_q.weight": {
+   "orbax": "blocks.9.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.cross_attn.norm_k.weight": {
+   "orbax": "blocks.9.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.norm3.weight": {
+   "orbax": "blocks.9.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.norm3.bias": {
+   "orbax": "blocks.9.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.ffn.0.weight": {
+   "orbax": "blocks.9.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.9.ffn.0.bias": {
+   "orbax": "blocks.9.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.9.ffn.2.weight": {
+   "orbax": "blocks.9.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.9.ffn.2.bias": {
+   "orbax": "blocks.9.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.modulation": {
+   "orbax": "blocks.10.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.q.weight": {
+   "orbax": "blocks.10.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.q.bias": {
+   "orbax": "blocks.10.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.k.weight": {
+   "orbax": "blocks.10.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.k.bias": {
+   "orbax": "blocks.10.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.v.weight": {
+   "orbax": "blocks.10.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.v.bias": {
+   "orbax": "blocks.10.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.o.weight": {
+   "orbax": "blocks.10.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.o.bias": {
+   "orbax": "blocks.10.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.norm_q.weight": {
+   "orbax": "blocks.10.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.self_attn.norm_k.weight": {
+   "orbax": "blocks.10.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.q.weight": {
+   "orbax": "blocks.10.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.q.bias": {
+   "orbax": "blocks.10.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.k.weight": {
+   "orbax": "blocks.10.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.k.bias": {
+   "orbax": "blocks.10.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.v.weight": {
+   "orbax": "blocks.10.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.v.bias": {
+   "orbax": "blocks.10.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.o.weight": {
+   "orbax": "blocks.10.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.o.bias": {
+   "orbax": "blocks.10.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.norm_q.weight": {
+   "orbax": "blocks.10.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.cross_attn.norm_k.weight": {
+   "orbax": "blocks.10.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.norm3.weight": {
+   "orbax": "blocks.10.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.norm3.bias": {
+   "orbax": "blocks.10.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.ffn.0.weight": {
+   "orbax": "blocks.10.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.10.ffn.0.bias": {
+   "orbax": "blocks.10.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.10.ffn.2.weight": {
+   "orbax": "blocks.10.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.10.ffn.2.bias": {
+   "orbax": "blocks.10.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.modulation": {
+   "orbax": "blocks.11.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.q.weight": {
+   "orbax": "blocks.11.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.q.bias": {
+   "orbax": "blocks.11.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.k.weight": {
+   "orbax": "blocks.11.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.k.bias": {
+   "orbax": "blocks.11.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.v.weight": {
+   "orbax": "blocks.11.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.v.bias": {
+   "orbax": "blocks.11.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.o.weight": {
+   "orbax": "blocks.11.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.o.bias": {
+   "orbax": "blocks.11.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.norm_q.weight": {
+   "orbax": "blocks.11.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.self_attn.norm_k.weight": {
+   "orbax": "blocks.11.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.q.weight": {
+   "orbax": "blocks.11.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.q.bias": {
+   "orbax": "blocks.11.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.k.weight": {
+   "orbax": "blocks.11.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.k.bias": {
+   "orbax": "blocks.11.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.v.weight": {
+   "orbax": "blocks.11.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.v.bias": {
+   "orbax": "blocks.11.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.o.weight": {
+   "orbax": "blocks.11.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.o.bias": {
+   "orbax": "blocks.11.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.norm_q.weight": {
+   "orbax": "blocks.11.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.cross_attn.norm_k.weight": {
+   "orbax": "blocks.11.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.norm3.weight": {
+   "orbax": "blocks.11.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.norm3.bias": {
+   "orbax": "blocks.11.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.ffn.0.weight": {
+   "orbax": "blocks.11.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.11.ffn.0.bias": {
+   "orbax": "blocks.11.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.11.ffn.2.weight": {
+   "orbax": "blocks.11.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.11.ffn.2.bias": {
+   "orbax": "blocks.11.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.modulation": {
+   "orbax": "blocks.12.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.q.weight": {
+   "orbax": "blocks.12.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.q.bias": {
+   "orbax": "blocks.12.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.k.weight": {
+   "orbax": "blocks.12.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.k.bias": {
+   "orbax": "blocks.12.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.v.weight": {
+   "orbax": "blocks.12.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.v.bias": {
+   "orbax": "blocks.12.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.o.weight": {
+   "orbax": "blocks.12.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.o.bias": {
+   "orbax": "blocks.12.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.norm_q.weight": {
+   "orbax": "blocks.12.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.self_attn.norm_k.weight": {
+   "orbax": "blocks.12.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.q.weight": {
+   "orbax": "blocks.12.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.q.bias": {
+   "orbax": "blocks.12.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.k.weight": {
+   "orbax": "blocks.12.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.k.bias": {
+   "orbax": "blocks.12.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.v.weight": {
+   "orbax": "blocks.12.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.v.bias": {
+   "orbax": "blocks.12.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.o.weight": {
+   "orbax": "blocks.12.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.o.bias": {
+   "orbax": "blocks.12.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.norm_q.weight": {
+   "orbax": "blocks.12.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.cross_attn.norm_k.weight": {
+   "orbax": "blocks.12.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.norm3.weight": {
+   "orbax": "blocks.12.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.norm3.bias": {
+   "orbax": "blocks.12.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.ffn.0.weight": {
+   "orbax": "blocks.12.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.12.ffn.0.bias": {
+   "orbax": "blocks.12.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.12.ffn.2.weight": {
+   "orbax": "blocks.12.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.12.ffn.2.bias": {
+   "orbax": "blocks.12.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.modulation": {
+   "orbax": "blocks.13.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.q.weight": {
+   "orbax": "blocks.13.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.q.bias": {
+   "orbax": "blocks.13.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.k.weight": {
+   "orbax": "blocks.13.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.k.bias": {
+   "orbax": "blocks.13.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.v.weight": {
+   "orbax": "blocks.13.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.v.bias": {
+   "orbax": "blocks.13.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.o.weight": {
+   "orbax": "blocks.13.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.o.bias": {
+   "orbax": "blocks.13.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.norm_q.weight": {
+   "orbax": "blocks.13.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.self_attn.norm_k.weight": {
+   "orbax": "blocks.13.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.q.weight": {
+   "orbax": "blocks.13.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.q.bias": {
+   "orbax": "blocks.13.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.k.weight": {
+   "orbax": "blocks.13.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.k.bias": {
+   "orbax": "blocks.13.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.v.weight": {
+   "orbax": "blocks.13.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.v.bias": {
+   "orbax": "blocks.13.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.o.weight": {
+   "orbax": "blocks.13.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.o.bias": {
+   "orbax": "blocks.13.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.norm_q.weight": {
+   "orbax": "blocks.13.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.cross_attn.norm_k.weight": {
+   "orbax": "blocks.13.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.norm3.weight": {
+   "orbax": "blocks.13.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.norm3.bias": {
+   "orbax": "blocks.13.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.ffn.0.weight": {
+   "orbax": "blocks.13.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.13.ffn.0.bias": {
+   "orbax": "blocks.13.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.13.ffn.2.weight": {
+   "orbax": "blocks.13.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.13.ffn.2.bias": {
+   "orbax": "blocks.13.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.modulation": {
+   "orbax": "blocks.14.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.q.weight": {
+   "orbax": "blocks.14.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.q.bias": {
+   "orbax": "blocks.14.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.k.weight": {
+   "orbax": "blocks.14.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.k.bias": {
+   "orbax": "blocks.14.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.v.weight": {
+   "orbax": "blocks.14.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.v.bias": {
+   "orbax": "blocks.14.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.o.weight": {
+   "orbax": "blocks.14.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.o.bias": {
+   "orbax": "blocks.14.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.norm_q.weight": {
+   "orbax": "blocks.14.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.self_attn.norm_k.weight": {
+   "orbax": "blocks.14.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.q.weight": {
+   "orbax": "blocks.14.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.q.bias": {
+   "orbax": "blocks.14.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.k.weight": {
+   "orbax": "blocks.14.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.k.bias": {
+   "orbax": "blocks.14.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.v.weight": {
+   "orbax": "blocks.14.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.v.bias": {
+   "orbax": "blocks.14.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.o.weight": {
+   "orbax": "blocks.14.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.o.bias": {
+   "orbax": "blocks.14.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.norm_q.weight": {
+   "orbax": "blocks.14.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.cross_attn.norm_k.weight": {
+   "orbax": "blocks.14.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.norm3.weight": {
+   "orbax": "blocks.14.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.norm3.bias": {
+   "orbax": "blocks.14.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.ffn.0.weight": {
+   "orbax": "blocks.14.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.14.ffn.0.bias": {
+   "orbax": "blocks.14.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.14.ffn.2.weight": {
+   "orbax": "blocks.14.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.14.ffn.2.bias": {
+   "orbax": "blocks.14.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.modulation": {
+   "orbax": "blocks.15.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.q.weight": {
+   "orbax": "blocks.15.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.q.bias": {
+   "orbax": "blocks.15.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.k.weight": {
+   "orbax": "blocks.15.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.k.bias": {
+   "orbax": "blocks.15.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.v.weight": {
+   "orbax": "blocks.15.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.v.bias": {
+   "orbax": "blocks.15.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.o.weight": {
+   "orbax": "blocks.15.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.o.bias": {
+   "orbax": "blocks.15.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.norm_q.weight": {
+   "orbax": "blocks.15.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.self_attn.norm_k.weight": {
+   "orbax": "blocks.15.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.q.weight": {
+   "orbax": "blocks.15.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.q.bias": {
+   "orbax": "blocks.15.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.k.weight": {
+   "orbax": "blocks.15.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.k.bias": {
+   "orbax": "blocks.15.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.v.weight": {
+   "orbax": "blocks.15.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.v.bias": {
+   "orbax": "blocks.15.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.o.weight": {
+   "orbax": "blocks.15.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.o.bias": {
+   "orbax": "blocks.15.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.norm_q.weight": {
+   "orbax": "blocks.15.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.cross_attn.norm_k.weight": {
+   "orbax": "blocks.15.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.norm3.weight": {
+   "orbax": "blocks.15.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.norm3.bias": {
+   "orbax": "blocks.15.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.ffn.0.weight": {
+   "orbax": "blocks.15.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.15.ffn.0.bias": {
+   "orbax": "blocks.15.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.15.ffn.2.weight": {
+   "orbax": "blocks.15.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.15.ffn.2.bias": {
+   "orbax": "blocks.15.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.modulation": {
+   "orbax": "blocks.16.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.q.weight": {
+   "orbax": "blocks.16.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.q.bias": {
+   "orbax": "blocks.16.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.k.weight": {
+   "orbax": "blocks.16.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.k.bias": {
+   "orbax": "blocks.16.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.v.weight": {
+   "orbax": "blocks.16.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.v.bias": {
+   "orbax": "blocks.16.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.o.weight": {
+   "orbax": "blocks.16.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.o.bias": {
+   "orbax": "blocks.16.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.norm_q.weight": {
+   "orbax": "blocks.16.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.self_attn.norm_k.weight": {
+   "orbax": "blocks.16.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.q.weight": {
+   "orbax": "blocks.16.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.q.bias": {
+   "orbax": "blocks.16.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.k.weight": {
+   "orbax": "blocks.16.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.k.bias": {
+   "orbax": "blocks.16.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.v.weight": {
+   "orbax": "blocks.16.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.v.bias": {
+   "orbax": "blocks.16.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.o.weight": {
+   "orbax": "blocks.16.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.o.bias": {
+   "orbax": "blocks.16.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.norm_q.weight": {
+   "orbax": "blocks.16.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.cross_attn.norm_k.weight": {
+   "orbax": "blocks.16.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.norm3.weight": {
+   "orbax": "blocks.16.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.norm3.bias": {
+   "orbax": "blocks.16.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.ffn.0.weight": {
+   "orbax": "blocks.16.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.16.ffn.0.bias": {
+   "orbax": "blocks.16.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.16.ffn.2.weight": {
+   "orbax": "blocks.16.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.16.ffn.2.bias": {
+   "orbax": "blocks.16.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.modulation": {
+   "orbax": "blocks.17.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.q.weight": {
+   "orbax": "blocks.17.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.q.bias": {
+   "orbax": "blocks.17.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.k.weight": {
+   "orbax": "blocks.17.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.k.bias": {
+   "orbax": "blocks.17.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.v.weight": {
+   "orbax": "blocks.17.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.v.bias": {
+   "orbax": "blocks.17.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.o.weight": {
+   "orbax": "blocks.17.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.o.bias": {
+   "orbax": "blocks.17.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.norm_q.weight": {
+   "orbax": "blocks.17.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.self_attn.norm_k.weight": {
+   "orbax": "blocks.17.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.q.weight": {
+   "orbax": "blocks.17.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.q.bias": {
+   "orbax": "blocks.17.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.k.weight": {
+   "orbax": "blocks.17.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.k.bias": {
+   "orbax": "blocks.17.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.v.weight": {
+   "orbax": "blocks.17.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.v.bias": {
+   "orbax": "blocks.17.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.o.weight": {
+   "orbax": "blocks.17.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.o.bias": {
+   "orbax": "blocks.17.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.norm_q.weight": {
+   "orbax": "blocks.17.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.cross_attn.norm_k.weight": {
+   "orbax": "blocks.17.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.norm3.weight": {
+   "orbax": "blocks.17.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.norm3.bias": {
+   "orbax": "blocks.17.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.ffn.0.weight": {
+   "orbax": "blocks.17.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.17.ffn.0.bias": {
+   "orbax": "blocks.17.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.17.ffn.2.weight": {
+   "orbax": "blocks.17.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.17.ffn.2.bias": {
+   "orbax": "blocks.17.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.modulation": {
+   "orbax": "blocks.18.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.q.weight": {
+   "orbax": "blocks.18.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.q.bias": {
+   "orbax": "blocks.18.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.k.weight": {
+   "orbax": "blocks.18.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.k.bias": {
+   "orbax": "blocks.18.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.v.weight": {
+   "orbax": "blocks.18.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.v.bias": {
+   "orbax": "blocks.18.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.o.weight": {
+   "orbax": "blocks.18.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.o.bias": {
+   "orbax": "blocks.18.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.norm_q.weight": {
+   "orbax": "blocks.18.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.self_attn.norm_k.weight": {
+   "orbax": "blocks.18.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.q.weight": {
+   "orbax": "blocks.18.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.q.bias": {
+   "orbax": "blocks.18.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.k.weight": {
+   "orbax": "blocks.18.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.k.bias": {
+   "orbax": "blocks.18.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.v.weight": {
+   "orbax": "blocks.18.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.v.bias": {
+   "orbax": "blocks.18.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.o.weight": {
+   "orbax": "blocks.18.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.o.bias": {
+   "orbax": "blocks.18.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.norm_q.weight": {
+   "orbax": "blocks.18.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.cross_attn.norm_k.weight": {
+   "orbax": "blocks.18.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.norm3.weight": {
+   "orbax": "blocks.18.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.norm3.bias": {
+   "orbax": "blocks.18.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.ffn.0.weight": {
+   "orbax": "blocks.18.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.18.ffn.0.bias": {
+   "orbax": "blocks.18.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.18.ffn.2.weight": {
+   "orbax": "blocks.18.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.18.ffn.2.bias": {
+   "orbax": "blocks.18.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.modulation": {
+   "orbax": "blocks.19.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.q.weight": {
+   "orbax": "blocks.19.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.q.bias": {
+   "orbax": "blocks.19.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.k.weight": {
+   "orbax": "blocks.19.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.k.bias": {
+   "orbax": "blocks.19.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.v.weight": {
+   "orbax": "blocks.19.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.v.bias": {
+   "orbax": "blocks.19.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.o.weight": {
+   "orbax": "blocks.19.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.o.bias": {
+   "orbax": "blocks.19.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.norm_q.weight": {
+   "orbax": "blocks.19.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.self_attn.norm_k.weight": {
+   "orbax": "blocks.19.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.q.weight": {
+   "orbax": "blocks.19.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.q.bias": {
+   "orbax": "blocks.19.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.k.weight": {
+   "orbax": "blocks.19.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.k.bias": {
+   "orbax": "blocks.19.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.v.weight": {
+   "orbax": "blocks.19.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.v.bias": {
+   "orbax": "blocks.19.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.o.weight": {
+   "orbax": "blocks.19.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.o.bias": {
+   "orbax": "blocks.19.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.norm_q.weight": {
+   "orbax": "blocks.19.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.cross_attn.norm_k.weight": {
+   "orbax": "blocks.19.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.norm3.weight": {
+   "orbax": "blocks.19.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.norm3.bias": {
+   "orbax": "blocks.19.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.ffn.0.weight": {
+   "orbax": "blocks.19.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.19.ffn.0.bias": {
+   "orbax": "blocks.19.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.19.ffn.2.weight": {
+   "orbax": "blocks.19.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.19.ffn.2.bias": {
+   "orbax": "blocks.19.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.modulation": {
+   "orbax": "blocks.20.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.q.weight": {
+   "orbax": "blocks.20.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.q.bias": {
+   "orbax": "blocks.20.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.k.weight": {
+   "orbax": "blocks.20.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.k.bias": {
+   "orbax": "blocks.20.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.v.weight": {
+   "orbax": "blocks.20.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.v.bias": {
+   "orbax": "blocks.20.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.o.weight": {
+   "orbax": "blocks.20.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.o.bias": {
+   "orbax": "blocks.20.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.norm_q.weight": {
+   "orbax": "blocks.20.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.self_attn.norm_k.weight": {
+   "orbax": "blocks.20.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.q.weight": {
+   "orbax": "blocks.20.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.q.bias": {
+   "orbax": "blocks.20.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.k.weight": {
+   "orbax": "blocks.20.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.k.bias": {
+   "orbax": "blocks.20.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.v.weight": {
+   "orbax": "blocks.20.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.v.bias": {
+   "orbax": "blocks.20.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.o.weight": {
+   "orbax": "blocks.20.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.o.bias": {
+   "orbax": "blocks.20.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.norm_q.weight": {
+   "orbax": "blocks.20.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.cross_attn.norm_k.weight": {
+   "orbax": "blocks.20.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.norm3.weight": {
+   "orbax": "blocks.20.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.norm3.bias": {
+   "orbax": "blocks.20.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.ffn.0.weight": {
+   "orbax": "blocks.20.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.20.ffn.0.bias": {
+   "orbax": "blocks.20.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.20.ffn.2.weight": {
+   "orbax": "blocks.20.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.20.ffn.2.bias": {
+   "orbax": "blocks.20.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.modulation": {
+   "orbax": "blocks.21.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.q.weight": {
+   "orbax": "blocks.21.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.q.bias": {
+   "orbax": "blocks.21.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.k.weight": {
+   "orbax": "blocks.21.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.k.bias": {
+   "orbax": "blocks.21.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.v.weight": {
+   "orbax": "blocks.21.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.v.bias": {
+   "orbax": "blocks.21.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.o.weight": {
+   "orbax": "blocks.21.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.o.bias": {
+   "orbax": "blocks.21.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.norm_q.weight": {
+   "orbax": "blocks.21.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.self_attn.norm_k.weight": {
+   "orbax": "blocks.21.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.q.weight": {
+   "orbax": "blocks.21.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.q.bias": {
+   "orbax": "blocks.21.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.k.weight": {
+   "orbax": "blocks.21.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.k.bias": {
+   "orbax": "blocks.21.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.v.weight": {
+   "orbax": "blocks.21.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.v.bias": {
+   "orbax": "blocks.21.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.o.weight": {
+   "orbax": "blocks.21.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.o.bias": {
+   "orbax": "blocks.21.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.norm_q.weight": {
+   "orbax": "blocks.21.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.cross_attn.norm_k.weight": {
+   "orbax": "blocks.21.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.norm3.weight": {
+   "orbax": "blocks.21.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.norm3.bias": {
+   "orbax": "blocks.21.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.ffn.0.weight": {
+   "orbax": "blocks.21.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.21.ffn.0.bias": {
+   "orbax": "blocks.21.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.21.ffn.2.weight": {
+   "orbax": "blocks.21.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.21.ffn.2.bias": {
+   "orbax": "blocks.21.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.modulation": {
+   "orbax": "blocks.22.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.q.weight": {
+   "orbax": "blocks.22.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.q.bias": {
+   "orbax": "blocks.22.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.k.weight": {
+   "orbax": "blocks.22.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.k.bias": {
+   "orbax": "blocks.22.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.v.weight": {
+   "orbax": "blocks.22.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.v.bias": {
+   "orbax": "blocks.22.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.o.weight": {
+   "orbax": "blocks.22.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.o.bias": {
+   "orbax": "blocks.22.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.norm_q.weight": {
+   "orbax": "blocks.22.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.self_attn.norm_k.weight": {
+   "orbax": "blocks.22.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.q.weight": {
+   "orbax": "blocks.22.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.q.bias": {
+   "orbax": "blocks.22.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.k.weight": {
+   "orbax": "blocks.22.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.k.bias": {
+   "orbax": "blocks.22.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.v.weight": {
+   "orbax": "blocks.22.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.v.bias": {
+   "orbax": "blocks.22.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.o.weight": {
+   "orbax": "blocks.22.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.o.bias": {
+   "orbax": "blocks.22.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.norm_q.weight": {
+   "orbax": "blocks.22.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.cross_attn.norm_k.weight": {
+   "orbax": "blocks.22.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.norm3.weight": {
+   "orbax": "blocks.22.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.norm3.bias": {
+   "orbax": "blocks.22.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.ffn.0.weight": {
+   "orbax": "blocks.22.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.22.ffn.0.bias": {
+   "orbax": "blocks.22.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.22.ffn.2.weight": {
+   "orbax": "blocks.22.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.22.ffn.2.bias": {
+   "orbax": "blocks.22.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.modulation": {
+   "orbax": "blocks.23.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.q.weight": {
+   "orbax": "blocks.23.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.q.bias": {
+   "orbax": "blocks.23.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.k.weight": {
+   "orbax": "blocks.23.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.k.bias": {
+   "orbax": "blocks.23.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.v.weight": {
+   "orbax": "blocks.23.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.v.bias": {
+   "orbax": "blocks.23.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.o.weight": {
+   "orbax": "blocks.23.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.o.bias": {
+   "orbax": "blocks.23.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.norm_q.weight": {
+   "orbax": "blocks.23.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.self_attn.norm_k.weight": {
+   "orbax": "blocks.23.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.q.weight": {
+   "orbax": "blocks.23.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.q.bias": {
+   "orbax": "blocks.23.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.k.weight": {
+   "orbax": "blocks.23.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.k.bias": {
+   "orbax": "blocks.23.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.v.weight": {
+   "orbax": "blocks.23.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.v.bias": {
+   "orbax": "blocks.23.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.o.weight": {
+   "orbax": "blocks.23.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.o.bias": {
+   "orbax": "blocks.23.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.norm_q.weight": {
+   "orbax": "blocks.23.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.cross_attn.norm_k.weight": {
+   "orbax": "blocks.23.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.norm3.weight": {
+   "orbax": "blocks.23.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.norm3.bias": {
+   "orbax": "blocks.23.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.ffn.0.weight": {
+   "orbax": "blocks.23.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.23.ffn.0.bias": {
+   "orbax": "blocks.23.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.23.ffn.2.weight": {
+   "orbax": "blocks.23.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.23.ffn.2.bias": {
+   "orbax": "blocks.23.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.modulation": {
+   "orbax": "blocks.24.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.q.weight": {
+   "orbax": "blocks.24.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.q.bias": {
+   "orbax": "blocks.24.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.k.weight": {
+   "orbax": "blocks.24.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.k.bias": {
+   "orbax": "blocks.24.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.v.weight": {
+   "orbax": "blocks.24.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.v.bias": {
+   "orbax": "blocks.24.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.o.weight": {
+   "orbax": "blocks.24.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.o.bias": {
+   "orbax": "blocks.24.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.norm_q.weight": {
+   "orbax": "blocks.24.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.self_attn.norm_k.weight": {
+   "orbax": "blocks.24.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.q.weight": {
+   "orbax": "blocks.24.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.q.bias": {
+   "orbax": "blocks.24.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.k.weight": {
+   "orbax": "blocks.24.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.k.bias": {
+   "orbax": "blocks.24.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.v.weight": {
+   "orbax": "blocks.24.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.v.bias": {
+   "orbax": "blocks.24.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.o.weight": {
+   "orbax": "blocks.24.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.o.bias": {
+   "orbax": "blocks.24.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.norm_q.weight": {
+   "orbax": "blocks.24.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.cross_attn.norm_k.weight": {
+   "orbax": "blocks.24.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.norm3.weight": {
+   "orbax": "blocks.24.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.norm3.bias": {
+   "orbax": "blocks.24.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.ffn.0.weight": {
+   "orbax": "blocks.24.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.24.ffn.0.bias": {
+   "orbax": "blocks.24.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.24.ffn.2.weight": {
+   "orbax": "blocks.24.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.24.ffn.2.bias": {
+   "orbax": "blocks.24.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.modulation": {
+   "orbax": "blocks.25.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.q.weight": {
+   "orbax": "blocks.25.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.q.bias": {
+   "orbax": "blocks.25.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.k.weight": {
+   "orbax": "blocks.25.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.k.bias": {
+   "orbax": "blocks.25.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.v.weight": {
+   "orbax": "blocks.25.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.v.bias": {
+   "orbax": "blocks.25.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.o.weight": {
+   "orbax": "blocks.25.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.o.bias": {
+   "orbax": "blocks.25.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.norm_q.weight": {
+   "orbax": "blocks.25.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.self_attn.norm_k.weight": {
+   "orbax": "blocks.25.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.q.weight": {
+   "orbax": "blocks.25.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.q.bias": {
+   "orbax": "blocks.25.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.k.weight": {
+   "orbax": "blocks.25.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.k.bias": {
+   "orbax": "blocks.25.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.v.weight": {
+   "orbax": "blocks.25.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.v.bias": {
+   "orbax": "blocks.25.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.o.weight": {
+   "orbax": "blocks.25.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.o.bias": {
+   "orbax": "blocks.25.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.norm_q.weight": {
+   "orbax": "blocks.25.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.cross_attn.norm_k.weight": {
+   "orbax": "blocks.25.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.norm3.weight": {
+   "orbax": "blocks.25.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.norm3.bias": {
+   "orbax": "blocks.25.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.ffn.0.weight": {
+   "orbax": "blocks.25.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.25.ffn.0.bias": {
+   "orbax": "blocks.25.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.25.ffn.2.weight": {
+   "orbax": "blocks.25.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.25.ffn.2.bias": {
+   "orbax": "blocks.25.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.modulation": {
+   "orbax": "blocks.26.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.q.weight": {
+   "orbax": "blocks.26.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.q.bias": {
+   "orbax": "blocks.26.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.k.weight": {
+   "orbax": "blocks.26.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.k.bias": {
+   "orbax": "blocks.26.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.v.weight": {
+   "orbax": "blocks.26.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.v.bias": {
+   "orbax": "blocks.26.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.o.weight": {
+   "orbax": "blocks.26.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.o.bias": {
+   "orbax": "blocks.26.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.norm_q.weight": {
+   "orbax": "blocks.26.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.self_attn.norm_k.weight": {
+   "orbax": "blocks.26.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.q.weight": {
+   "orbax": "blocks.26.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.q.bias": {
+   "orbax": "blocks.26.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.k.weight": {
+   "orbax": "blocks.26.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.k.bias": {
+   "orbax": "blocks.26.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.v.weight": {
+   "orbax": "blocks.26.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.v.bias": {
+   "orbax": "blocks.26.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.o.weight": {
+   "orbax": "blocks.26.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.o.bias": {
+   "orbax": "blocks.26.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.norm_q.weight": {
+   "orbax": "blocks.26.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.cross_attn.norm_k.weight": {
+   "orbax": "blocks.26.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.norm3.weight": {
+   "orbax": "blocks.26.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.norm3.bias": {
+   "orbax": "blocks.26.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.ffn.0.weight": {
+   "orbax": "blocks.26.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.26.ffn.0.bias": {
+   "orbax": "blocks.26.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.26.ffn.2.weight": {
+   "orbax": "blocks.26.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.26.ffn.2.bias": {
+   "orbax": "blocks.26.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.modulation": {
+   "orbax": "blocks.27.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.q.weight": {
+   "orbax": "blocks.27.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.q.bias": {
+   "orbax": "blocks.27.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.k.weight": {
+   "orbax": "blocks.27.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.k.bias": {
+   "orbax": "blocks.27.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.v.weight": {
+   "orbax": "blocks.27.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.v.bias": {
+   "orbax": "blocks.27.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.o.weight": {
+   "orbax": "blocks.27.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.o.bias": {
+   "orbax": "blocks.27.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.norm_q.weight": {
+   "orbax": "blocks.27.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.self_attn.norm_k.weight": {
+   "orbax": "blocks.27.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.q.weight": {
+   "orbax": "blocks.27.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.q.bias": {
+   "orbax": "blocks.27.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.k.weight": {
+   "orbax": "blocks.27.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.k.bias": {
+   "orbax": "blocks.27.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.v.weight": {
+   "orbax": "blocks.27.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.v.bias": {
+   "orbax": "blocks.27.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.o.weight": {
+   "orbax": "blocks.27.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.o.bias": {
+   "orbax": "blocks.27.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.norm_q.weight": {
+   "orbax": "blocks.27.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.cross_attn.norm_k.weight": {
+   "orbax": "blocks.27.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.norm3.weight": {
+   "orbax": "blocks.27.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.norm3.bias": {
+   "orbax": "blocks.27.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.ffn.0.weight": {
+   "orbax": "blocks.27.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.27.ffn.0.bias": {
+   "orbax": "blocks.27.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.27.ffn.2.weight": {
+   "orbax": "blocks.27.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.27.ffn.2.bias": {
+   "orbax": "blocks.27.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.modulation": {
+   "orbax": "blocks.28.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.q.weight": {
+   "orbax": "blocks.28.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.q.bias": {
+   "orbax": "blocks.28.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.k.weight": {
+   "orbax": "blocks.28.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.k.bias": {
+   "orbax": "blocks.28.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.v.weight": {
+   "orbax": "blocks.28.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.v.bias": {
+   "orbax": "blocks.28.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.o.weight": {
+   "orbax": "blocks.28.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.o.bias": {
+   "orbax": "blocks.28.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.norm_q.weight": {
+   "orbax": "blocks.28.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.self_attn.norm_k.weight": {
+   "orbax": "blocks.28.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.q.weight": {
+   "orbax": "blocks.28.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.q.bias": {
+   "orbax": "blocks.28.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.k.weight": {
+   "orbax": "blocks.28.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.k.bias": {
+   "orbax": "blocks.28.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.v.weight": {
+   "orbax": "blocks.28.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.v.bias": {
+   "orbax": "blocks.28.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.o.weight": {
+   "orbax": "blocks.28.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.o.bias": {
+   "orbax": "blocks.28.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.norm_q.weight": {
+   "orbax": "blocks.28.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.cross_attn.norm_k.weight": {
+   "orbax": "blocks.28.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.norm3.weight": {
+   "orbax": "blocks.28.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.norm3.bias": {
+   "orbax": "blocks.28.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.ffn.0.weight": {
+   "orbax": "blocks.28.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.28.ffn.0.bias": {
+   "orbax": "blocks.28.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.28.ffn.2.weight": {
+   "orbax": "blocks.28.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.28.ffn.2.bias": {
+   "orbax": "blocks.28.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.modulation": {
+   "orbax": "blocks.29.adaln_scale_shift_table",
+   "pt_shape": [
+    1,
+    6,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    6,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.q.weight": {
+   "orbax": "blocks.29.attn1.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.q.bias": {
+   "orbax": "blocks.29.attn1.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.k.weight": {
+   "orbax": "blocks.29.attn1.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.k.bias": {
+   "orbax": "blocks.29.attn1.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.v.weight": {
+   "orbax": "blocks.29.attn1.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.v.bias": {
+   "orbax": "blocks.29.attn1.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.o.weight": {
+   "orbax": "blocks.29.attn1.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.o.bias": {
+   "orbax": "blocks.29.attn1.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.norm_q.weight": {
+   "orbax": "blocks.29.attn1.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.self_attn.norm_k.weight": {
+   "orbax": "blocks.29.attn1.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.q.weight": {
+   "orbax": "blocks.29.attn2.query.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.q.bias": {
+   "orbax": "blocks.29.attn2.query.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.k.weight": {
+   "orbax": "blocks.29.attn2.key.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.k.bias": {
+   "orbax": "blocks.29.attn2.key.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.v.weight": {
+   "orbax": "blocks.29.attn2.value.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.v.bias": {
+   "orbax": "blocks.29.attn2.value.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.o.weight": {
+   "orbax": "blocks.29.attn2.proj_attn.kernel",
+   "pt_shape": [
+    3072,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.o.bias": {
+   "orbax": "blocks.29.attn2.proj_attn.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.norm_q.weight": {
+   "orbax": "blocks.29.attn2.norm_q.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.cross_attn.norm_k.weight": {
+   "orbax": "blocks.29.attn2.norm_k.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.norm3.weight": {
+   "orbax": "blocks.29.norm2.scale",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.norm3.bias": {
+   "orbax": "blocks.29.norm2.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.ffn.0.weight": {
+   "orbax": "blocks.29.ffn.act_fn.proj.kernel",
+   "pt_shape": [
+    14336,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.29.ffn.0.bias": {
+   "orbax": "blocks.29.ffn.act_fn.proj.bias",
+   "pt_shape": [
+    14336
+   ],
+   "orbax_shape": [
+    14336
+   ]
+  },
+  "mot.mixtures.video.blocks.29.ffn.2.weight": {
+   "orbax": "blocks.29.ffn.proj_out.kernel",
+   "pt_shape": [
+    3072,
+    14336
+   ],
+   "orbax_shape": [
+    14336,
+    3072
+   ]
+  },
+  "mot.mixtures.video.blocks.29.ffn.2.bias": {
+   "orbax": "blocks.29.ffn.proj_out.bias",
+   "pt_shape": [
+    3072
+   ],
+   "orbax_shape": [
+    3072
+   ]
+  },
+  "mot.mixtures.video.head.modulation": {
+   "orbax": "scale_shift_table",
+   "pt_shape": [
+    1,
+    2,
+    3072
+   ],
+   "orbax_shape": [
+    1,
+    2,
+    3072
+   ]
+  },
+  "mot.mixtures.video.head.head.weight": {
+   "orbax": "proj_out.kernel",
+   "pt_shape": [
+    192,
+    3072
+   ],
+   "orbax_shape": [
+    3072,
+    192
+   ]
+  },
+  "mot.mixtures.video.head.head.bias": {
+   "orbax": "proj_out.bias",
+   "pt_shape": [
+    192
+   ],
+   "orbax_shape": [
+    192
+   ]
+  }
+ }
+}

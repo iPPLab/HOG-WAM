@@ -1,0 +1,81 @@
+# Simulator venv for the closed-loop eval: RoboTwin 2.0 + the UMT5 text encoder.
+#
+# Versions are the ones that ran the A-line campaign (243/250 units sealed at 97.20 %,
+# 2026-08), read back off that venv rather than resolved fresh. RoboTwin's own
+# script/requirements.txt is the starting point; the differences from it are all
+# deliberate and all noted below.
+#
+# This file is NOT a `pip freeze`. Transitive dependencies are left to the resolver;
+# what is pinned here is what an upgrade would silently break.
+
+# --- the ABI floor -----------------------------------------------------------------
+# sapien 3.0.0b1 and mplib 0.2.1 are compiled against the numpy 1.x C API. numpy 2
+# imports but segfaults inside the renderer, so this pin holds the whole file together:
+# anything that drags in numpy>=2 has to be pinned below it instead.
+numpy==1.26.4
+torch==2.4.1
+torchvision==0.19.1
+
+# --- simulator ---------------------------------------------------------------------
+sapien==3.0.0b1
+mplib==0.2.1
+toppra==0.6.3
+transforms3d==0.4.2
+gymnasium==0.29.1
+trimesh==4.4.3
+open3d==0.18.0
+yourdfpy==0.0.60
+numpy-quaternion==2024.0.13
+# curobo needs a setuptools old enough to still expose the pre-PEP660 editable hooks;
+# RoboTwin's own _install.sh pins the same value after building it.
+setuptools==69.5.1
+setuptools-scm
+# `wheel` is a BUILD dependency of curobo that curobo does not declare, and it has to be
+# in this environment rather than a build env because curobo is installed
+# `--no-build-isolation` (it must compile against the torch pinned above). RoboTwin's
+# _install.sh never needed the line: it uses pip, and pip's venvs ship wheel. uv's do
+# not, so a fresh setup died on `error: invalid command 'bdist_wheel'` -- caught by the
+# fresh-clone install, 2026-08-06.
+wheel
+
+# --- rendering, video, IO ----------------------------------------------------------
+opencv-python==4.11.0.86
+imageio==2.34.2
+imageio-ffmpeg==0.6.0
+moviepy==2.2.1
+av==18.0.0
+pillow
+h5py
+zarr
+lxml
+pyglet<2
+matplotlib
+scipy
+pandas
+networkx
+tqdm
+termcolor
+pydantic
+pyyaml
+
+# --- the FastWAM text encoder (ours, not RoboTwin's) -------------------------------
+# `eval/scripts/fastwam_text_server.py` runs UMT5-XXL on the CPU in this same venv, so
+# the sim venv is the only python the eval stack needs. It used to borrow another
+# repo's venv purely because that one happened to have torch + transformers.
+#
+# huggingface_hub is NOT RoboTwin's ==0.25.0: transformers 4.49 requires >=0.26. The
+# pin only ever served assets/_download.py, which is unaffected.
+transformers==4.49.0
+huggingface_hub>=0.26,<1.0
+safetensors
+accelerate
+
+# --- deliberately absent -----------------------------------------------------------
+# pytorch3d   RoboTwin's _install.sh builds it from git (~15 min, needs nvcc). Nothing
+#             on the eval path imports it -- the A-line venv never had it.
+# azure*      only `code_gen/`, the LLM task-description generator we do not run.
+# openai, wandb   same: collection/authoring tooling, not evaluation.
+# curobo      NOT pip-installable from an index. setup.sh clones v0.7.8 into
+#             third_party/RoboTwin/envs/curobo and builds it editable, because that is
+#             where RoboTwin's config resolves it from. aloha-agilex sets
+#             `planner: "curobo"`, so it is required, not optional.

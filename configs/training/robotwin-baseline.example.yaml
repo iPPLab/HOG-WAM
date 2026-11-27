@@ -1,0 +1,29 @@
+training_towers: rgb_action
+loss: {lambda_video: 1.0, lambda_hog: 0.0, lambda_action: 1.0}
+paths:
+  read:
+    video_dit_orbax: checkpoints/wan/video_dit
+    vae_orbax: checkpoints/wan/vae
+    action_dit_init: checkpoints/wan/action_init
+    training_data: data/robotwin/twp
+    dataset_stats: data/robotwin/dataset_stats.json
+    text_embeddings: data/robotwin/text
+  write:
+    runs: outputs/runs
+    jax_cache: outputs/jax-cache
+    code_packages: outputs/code
+tpu: {zone: local-gpu, accelerator: gpu-8, runtime_version: cuda12}
+data:
+  format: robotwin_twp
+  robotwin_packing: aligned
+  task_filter: null
+flow: {tau_copies: 8, copy_lengths: null}
+training:
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-2
+  num_epochs: 5
+  steps: 29365
+  decay_steps: 29365
+  global_batch_size: 1024
+  micro_batch_size: 32
+  checkpoint: {full_every: 250, bf16_every: 29365}

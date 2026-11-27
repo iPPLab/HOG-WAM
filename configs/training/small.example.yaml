@@ -1,0 +1,50 @@
+# Example user configuration for the 10-task v6e-16 run.
+# Change every GCS path explicitly when moving data or outputs to another owner/bucket.
+paths:
+  read:
+    video_dit_orbax: "gs://your-bucket/inputs/ckpt/wan22_5b/transformer"
+    vae_orbax: "gs://your-bucket/inputs/ckpt/wan22_5b/vae"
+    action_dit_init: "gs://your-bucket/inputs/fastwam_tpu/ckpt/action_dit_init_1024"
+    training_data: "gs://your-bucket/inputs/data/train/pixel_v3"
+    dataset_stats: "gs://your-bucket/inputs/fastwam_tpu/official_ckpt/robotwin_uncond_3cam_384_dataset_stats.json"
+    text_embeddings: "gs://your-bucket/inputs/fastwam_tpu/data/robotwin_uncond_3cam_384/text/umt5xxl_L128_fastwam_tmpl_wan21"
+  write:
+    runs: "gs://your-bucket/fastwam_tpu/runs"
+    jax_cache: "gs://your-bucket/fastwam_tpu/jax_cache_v6e_fastwam_hog"
+    code_packages: "gs://your-bucket/fastwam_tpu/code"
+
+tpu:
+  zone: "us-east1-d"
+  accelerator: "v6e-16"
+  runtime_version: "v6e-ubuntu-2404"
+
+data:
+  task_filter:
+    - "adjust_bottle"
+    - "beat_block_hammer"
+    - "blocks_ranking_rgb"
+    - "blocks_ranking_size"
+    - "click_alarmclock"
+    - "click_bell"
+    - "dump_bin_bigbin"
+    - "grab_roller"
+    - "handover_block"
+    - "handover_mic"
+
+# Action flow-time sampling. Keep the defaults for the released single-copy recipe.
+flow:
+  tau_copies: 1
+  copy_lengths: null
+
+# Parameters a training user may reasonably tune.
+training:
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-2
+  num_epochs: 5
+  steps: 30000
+  decay_steps: 30000
+  global_batch_size: 256
+  micro_batch_size: 256
+  checkpoint:
+    full_every: 200
+    bf16_every: 2500

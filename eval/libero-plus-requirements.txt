@@ -1,0 +1,15 @@
+numpy==1.26.4
+mujoco==3.3.2
+robosuite==1.4.0
+bddl==1.0.1
+easydict==1.9
+torch==2.6.0
+transformers==4.57.1
+opencv-python==4.10.0.84
+PyYAML
+Pillow
+Wand
+scikit-image
+termcolor
+robomimic==0.2.0
+usd-core>=25.5

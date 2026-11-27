@@ -1,0 +1,36 @@
+diff --git a/envs/_base_task.py b/envs/_base_task.py
+index 982e6ec..da5bd90 100644
+--- a/envs/_base_task.py
++++ b/envs/_base_task.py
+@@ -1547,13 +1547,14 @@ class Base_Task(gym.Env):
+                 left_result["position"], left_result["velocity"] = left_pos, left_vel
+                 left_n_step = left_result["position"].shape[0]
+             except Exception as e:
+-                # print("left arm TOPP error: ", e)
++                print(f"TOPP_FAIL left: {e}", flush=True)
+                 topp_left_flag = False
+                 left_n_step = 50  # fixed
+ 
+             if left_n_step == 0:
+                 topp_left_flag = False
+                 left_n_step = 50  # fixed
++                print("TOPP_FAIL left: n_step=0", flush=True)
+ 
+             try:
+                 times, right_pos, right_vel, acc, duration = (self.robot.right_mplib_planner.TOPP(right_path,
+@@ -1563,13 +1564,14 @@ class Base_Task(gym.Env):
+                 right_result["position"], right_result["velocity"] = right_pos, right_vel
+                 right_n_step = right_result["position"].shape[0]
+             except Exception as e:
+-                # print("right arm TOPP error: ", e)
++                print(f"TOPP_FAIL right: {e}", flush=True)
+                 topp_right_flag = False
+                 right_n_step = 50  # fixed
+ 
+             if right_n_step == 0:
+                 topp_right_flag = False
+                 right_n_step = 50  # fixed
++                print("TOPP_FAIL right: n_step=0", flush=True)
+         
+         elif action_type == 'ee':
+ 
